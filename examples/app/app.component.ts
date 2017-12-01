@@ -20,12 +20,9 @@ export class AppComponent {
   public url: string;
 
   public list: any[] = [
-    // {
-    //   name: 'Drilldown list', id: 'drilldown_list', route: 'drilldown_list'
-    // },
-    // {
-    //   name: 'Action list', id: 'action_list', route: 'action_list'
-    // },
+    {
+      name: 'Collage', id: 'collage', route: 'collage'
+    },
     {
       name: 'Picture', id: 'picture', route: 'picture'
     }

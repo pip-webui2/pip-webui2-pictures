@@ -14,9 +14,13 @@ import { AppComponent } from './app.component';
 import { PictureExampleModule } from './picture-example/picture-example.module';
 import { PictureExampleComponent } from './picture-example/picture-example.component';
 
+import { CollageExampleModule } from './collage-example/collage-example.module';
+import { CollageExampleComponent } from './collage-example/collage-example.component';
+
 const appRoutes: Routes = [
   { path: 'picture', component: PictureExampleComponent },
-  { path: '', pathMatch: 'full', redirectTo: 'action_list' }
+  { path: 'collage', component: CollageExampleComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'picture' }
 ];
 
 @NgModule({
@@ -39,6 +43,7 @@ const appRoutes: Routes = [
 
     ExampleListModule,
     PictureExampleModule,
+    CollageExampleModule,
 
     RouterModule.forRoot(appRoutes, { useHash: true })
   ],

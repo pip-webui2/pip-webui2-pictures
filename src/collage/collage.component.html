@@ -1,0 +1,5 @@
+<mat-grid-list [gutterSize]="gutterSize" *ngFor="let table of tables" [cols]="table.cols" [rowHeight]="table.rowHeight">
+    <mat-grid-tile *ngFor="let tile of table.tiles" [colspan]="tile.colspan" [rowspan]="tile.rowspan">
+        <pip-picture [src]="tile.src"></pip-picture>
+    </mat-grid-tile>
+</mat-grid-list>

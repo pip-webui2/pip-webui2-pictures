@@ -75,3 +75,393 @@ function objectToString(obj) {
 
     return result.substring(0, result.length - 1);
 }
+
+export let collageSchemes = [
+    // 1
+    [
+        {
+            cols: 1,
+            rowHeightDivider: 1,
+            pictures: [
+                {
+                    colspan: 1, rowspan: 1
+                }
+            ]
+        }
+    ],
+    // 2
+    [
+        {
+            cols: 2,
+            rowHeightDivider: 1,
+            pictures: [
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                }
+            ]
+        }
+    ],
+    // 3
+    [
+        {
+            cols: 2,
+            rowHeightDivider: 2,
+            pictures: [
+                {
+                    colspan: 1, rowspan: 2
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                }
+            ]
+        },
+        {
+            cols: 3,
+            rowHeightDivider: 2,
+            pictures: [
+                {
+                    colspan: 2, rowspan: 2
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                }
+            ]
+        },
+        {
+            cols: 2,
+            rowHeightDivider: 2,
+            pictures: [
+                {
+                    colspan: 2, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                }
+            ]
+        }
+    ],
+    // 4
+    [
+        {
+            cols: 4,
+            rowHeightDivider: 2,
+            pictures: [
+                {
+                    colspan: 2, rowspan: 2
+                },
+                {
+                    colspan: 2, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                }
+            ]
+        },
+        {
+            cols: 3,
+            rowHeightDivider: 2,
+            pictures: [
+                {
+                    colspan: 3, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                }
+            ]
+        },
+        {
+            cols: 2,
+            rowHeightDivider: 2,
+            pictures: [
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                }
+            ]
+        }
+    ],
+    // 5 
+    [
+        {
+            cols: 4,
+            rowHeightDivider: 2,
+            pictures: [
+                {
+                    colspan: 2, rowspan: 2
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                }
+            ]
+        },
+        {
+            cols: 4,
+            rowHeightDivider: 2,
+            pictures: [
+                {
+                    colspan: 4, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                }
+            ]
+        },
+        {
+            cols: 6,
+            rowHeightDivider: 2,
+            pictures: [
+                {
+                    colspan: 3, rowspan: 1
+                },
+                {
+                    colspan: 3, rowspan: 1
+                },
+                {
+                    colspan: 2, rowspan: 1
+                },
+                {
+                    colspan: 2, rowspan: 1
+                },
+                {
+                    colspan: 2, rowspan: 1
+                }
+            ]
+        }
+    ],
+    // 6
+    [
+        {
+            cols: 4,
+            rowHeightDivider: 2,
+            pictures: [
+                {
+                    colspan: 2, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 2, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                }
+            ]
+        },
+        {
+            cols: 14,
+            rowHeightDivider: 2,
+            pictures: [
+                {
+                    colspan: 8, rowspan: 2
+                },
+                {
+                    colspan: 3, rowspan: 1
+                },
+                {
+                    colspan: 3, rowspan: 1
+                },
+                {
+                    colspan: 2, rowspan: 1
+                },
+                {
+                    colspan: 2, rowspan: 1
+                },
+                {
+                    colspan: 2, rowspan: 1
+                }
+            ]
+        },
+        {
+            cols: 4,
+            rowHeightDivider: 2,
+            pictures: [
+                {
+                    colspan: 2, rowspan: 1
+                },
+                {
+                    colspan: 2, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                }
+            ]
+        },
+        {
+            cols: 3,
+            rowHeightDivider: 2,
+            pictures: [
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                }
+            ]
+        }
+    ],
+    // 7
+    [
+        {
+            cols: 4,
+            rowHeightDivider: 2,
+            pictures: [
+                {
+                    colspan: 2, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                }
+            ]
+        },
+        {
+            cols: 4,
+            rowHeightDivider: 2,
+            pictures: [
+                {
+                    colspan: 1, rowspan: 2
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                }
+            ]
+        }
+    ],
+    // 8
+    [
+        {
+            cols: 4,
+            rowHeightDivider: 2,
+            pictures: [
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                },
+                {
+                    colspan: 1, rowspan: 1
+                }
+            ]
+        }
+    ]
+];

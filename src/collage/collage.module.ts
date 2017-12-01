@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
-import { MatButtonModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatGridListModule } from '@angular/material';
 
+import { PipPictureModule } from '../picture/picture.module';
 import { PipCollageComponent } from './collage.component';
 
 @NgModule({
@@ -12,7 +13,10 @@ import { PipCollageComponent } from './collage.component';
   imports: [
     BrowserModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatGridListModule,
+
+    PipPictureModule
   ],
   exports: [
     PipCollageComponent

@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule, MatIconModule } from '@angular/material';
 
-import { PipPictureListComponent } from './picture-list.component';
+import { PipPictureListEditComponent } from './picture-list-edit.component';
 
 @NgModule({
   declarations: [
-    PipPictureListComponent
+    PipPictureListEditComponent
   ],
   imports: [
     BrowserModule,
@@ -15,8 +15,8 @@ import { PipPictureListComponent } from './picture-list.component';
     MatIconModule
   ],
   exports: [
-    PipPictureListComponent
+    PipPictureListEditComponent
   ],
   providers: [],
 })
-export class PipPictureListModule { }
+export class PipPictureListEditModule { }
