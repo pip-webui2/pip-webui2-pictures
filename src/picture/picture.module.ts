@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
-import { MatButtonModule, MatIconModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatIconModule } from '@angular/material';
 
 import { PipPictureComponent } from './picture.component';
 
@@ -11,7 +12,7 @@ import { PipPictureComponent } from './picture.component';
   ],
   imports: [
     BrowserModule,
-    MatButtonModule,
+    FlexLayoutModule,
     MatIconModule
   ],
   exports: [

@@ -11,11 +11,11 @@ import { PipThemesModule } from 'pip-webui2-themes';
 import { ExampleListModule } from './examples-list/examples-list.module';
 import { AppComponent } from './app.component';
 
-import { ToggleButtonsExampleModule } from './toggle-buttons-example/toggle-buttons-example.module';
-import { ToggleButtonsExampleComponent } from './toggle-buttons-example/toggle-buttons-example.component';
+import { PictureExampleModule } from './picture-example/picture-example.module';
+import { PictureExampleComponent } from './picture-example/picture-example.component';
 
 const appRoutes: Routes = [
-  { path: 'toggle_buttons', component: ToggleButtonsExampleComponent },
+  { path: 'picture', component: PictureExampleComponent },
   { path: '', pathMatch: 'full', redirectTo: 'action_list' }
 ];
 
@@ -38,7 +38,7 @@ const appRoutes: Routes = [
     PipThemesModule,
 
     ExampleListModule,
-    ToggleButtonsExampleModule,
+    PictureExampleModule,
 
     RouterModule.forRoot(appRoutes, { useHash: true })
   ],
