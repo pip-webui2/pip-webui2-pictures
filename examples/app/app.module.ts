@@ -17,9 +17,13 @@ import { PictureExampleComponent } from './picture-example/picture-example.compo
 import { CollageExampleModule } from './collage-example/collage-example.module';
 import { CollageExampleComponent } from './collage-example/collage-example.component';
 
+import { PictureEditExampleModule } from './picture-edit-example/picture-edit-example.module';
+import { PictureEditExampleComponent } from './picture-edit-example/picture-edit-example.component';
+
 const appRoutes: Routes = [
   { path: 'picture', component: PictureExampleComponent },
   { path: 'collage', component: CollageExampleComponent },
+  { path: 'picture_edit', component: PictureEditExampleComponent },
   { path: '', pathMatch: 'full', redirectTo: 'picture' }
 ];
 
@@ -44,6 +48,7 @@ const appRoutes: Routes = [
     ExampleListModule,
     PictureExampleModule,
     CollageExampleModule,
+    PictureEditExampleModule,
 
     RouterModule.forRoot(appRoutes, { useHash: true })
   ],

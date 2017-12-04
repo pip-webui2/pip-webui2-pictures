@@ -54,6 +54,7 @@ export class PipPictureComponent implements OnInit, AfterViewInit {
         var image = $event.path ? $event.path[0] : null;
 
         setErrorImageCSS(image, {});
+        image.style.cssText += 'display: none';
         this._defaultIconBlock.style.cssText += 'display: flex';
     }
 
@@ -61,6 +62,7 @@ export class PipPictureComponent implements OnInit, AfterViewInit {
         var image = $event.path ? $event.path[0] : null;
 
         setImageMarginCSS(this.elRef.nativeElement, image, {});
+        image.style.cssText += 'display: flex';
         this._defaultIconBlock.style.cssText += 'display: none';
     };
 }

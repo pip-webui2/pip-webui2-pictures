@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
-import { MatButtonModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatMenuModule, MatDialogModule } from '@angular/material';
 
 import { PipAddImageComponent } from './add-image.component';
+import { PipCameraDialogComponent } from '../camera-dialog/camera-dialog.component';
+import { PipCameraDialogModule } from '../camera-dialog/camera-dialog.module'
 
 @NgModule({
   declarations: [
@@ -12,11 +14,16 @@ import { PipAddImageComponent } from './add-image.component';
   imports: [
     BrowserModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatMenuModule,
+    MatDialogModule,
+
+    PipCameraDialogModule
   ],
   exports: [
     PipAddImageComponent
   ],
   providers: [],
+  entryComponents: [PipCameraDialogComponent]
 })
 export class PipAddImageModule { }

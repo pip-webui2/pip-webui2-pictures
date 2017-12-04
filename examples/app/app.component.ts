@@ -25,6 +25,9 @@ export class AppComponent {
     },
     {
       name: 'Picture', id: 'picture', route: 'picture'
+    },
+    {
+      name: 'Picture Edit', id: 'picture_edit', route: 'picture_edit'
     }
   ];
   @ViewChild('sidenav') sidenav: MatSidenav;

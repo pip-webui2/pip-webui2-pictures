@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule, MatIconModule } from '@angular/material';
 
+import { PipPictureModule } from '../picture/picture.module';
+import { PipAddImageModule } from '../add-image/add-image.module';
+
 import { PipPictureEditComponent } from './picture-edit.component';
 
 @NgModule({
@@ -12,7 +15,10 @@ import { PipPictureEditComponent } from './picture-edit.component';
   imports: [
     BrowserModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+
+    PipPictureModule,
+    PipAddImageModule
   ],
   exports: [
     PipPictureEditComponent

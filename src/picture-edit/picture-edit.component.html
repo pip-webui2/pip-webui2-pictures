@@ -1,0 +1,4 @@
+<pip-add-image (onImageLoad)="onImageLoad($event)">
+    <pip-picture class="square-l" [src]="imageSource"></pip-picture>
+    <button mat-icon-button *ngIf="imageSource" class="delete-button" (click)="onDeleteClick($event)"><mat-icon>clear</mat-icon></button>
+</pip-add-image>

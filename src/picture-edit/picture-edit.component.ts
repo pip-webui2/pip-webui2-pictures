@@ -8,6 +8,12 @@ import { Component, Input, Output, OnInit, AfterViewInit, EventEmitter, Renderer
 export class PipPictureEditComponent implements OnInit, AfterViewInit {
     ngOnInit() { }
 
+    public imageSource: string = null;
+
+    @Input() set src(source: string) {
+        this.imageSource = source;
+    }
+
     constructor(
         private renderer: Renderer,
         private elRef: ElementRef
@@ -17,5 +23,14 @@ export class PipPictureEditComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit() {
 
+    }
+
+    public onImageLoad(results) {
+        this.imageSource = results.img.url;
+    }
+
+    public onDeleteClick(event) {
+        event.cancelBubble = true;
+        this.imageSource = null;
     }
 }
