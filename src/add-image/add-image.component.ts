@@ -1,7 +1,9 @@
-import { Component, Input, Output, OnInit, AfterViewInit, EventEmitter, Renderer, ElementRef, HostListener } from '@angular/core';
+import { Component, Input, Output, OnInit, AfterViewInit, EventEmitter, Renderer, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { PipCameraDialogComponent } from '../camera-dialog/camera-dialog.component';
 import { PipPictureUrlDialogComponent } from '../picture-url-dialog/picture-url-dialog.component';
+import { MatMenuTrigger } from '@angular/material'
+
 
 @Component({
     selector: 'pip-add-image',
@@ -10,6 +12,7 @@ import { PipPictureUrlDialogComponent } from '../picture-url-dialog/picture-url-
 })
 export class PipAddImageComponent implements OnInit, AfterViewInit {
     ngOnInit() { }
+    @ViewChild(MatMenuTrigger) public menu: MatMenuTrigger;
 
     @Output() onImageLoad: EventEmitter<any> = new EventEmitter<any>();
 
@@ -22,7 +25,7 @@ export class PipAddImageComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
-
+        
     }
 
     public onCameraClick() {
