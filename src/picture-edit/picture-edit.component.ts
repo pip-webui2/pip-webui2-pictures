@@ -10,9 +10,13 @@ export class PipPictureEditComponent implements OnInit, AfterViewInit {
 
     public imageSource: string = null;
 
+    @Input() public defaultIcon: string = null;
     @Input() set src(source: string) {
         this.imageSource = source;
     }
+
+    @Output('onImageLoad') imageLoadEvent: EventEmitter<any> = new EventEmitter<any>();
+    @Output('onImageDelete') imageDeleteEvent: EventEmitter<any> = new EventEmitter<any>();
 
     constructor(
         private renderer: Renderer,
@@ -27,10 +31,12 @@ export class PipPictureEditComponent implements OnInit, AfterViewInit {
 
     public onImageLoad(results) {
         this.imageSource = results.img.url;
+        this.imageLoadEvent.emit(results.img);
     }
 
     public onDeleteClick(event) {
         event.cancelBubble = true;
         this.imageSource = null;
+        this.imageDeleteEvent.emit();
     }
 }

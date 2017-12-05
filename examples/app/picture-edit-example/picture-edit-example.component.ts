@@ -7,11 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PictureEditExampleComponent implements OnInit {
 
-    public image: any = null;
-
     ngOnInit() { }
     
     public onImageLoad(results) {
-        this.image = results.img.url;
+        console.log('Image loaded: ', results);
+    }
+
+    public onImageDelete(results) {
+        console.log('Image deleted!');
     }
 }

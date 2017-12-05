@@ -1,11 +1,1 @@
-<div style="margin-bottom: 24px">
-    <pip-add-image (onImageLoad)="onImageLoad($event)">
-        <button mat-button>
-            Click me to open menu!
-        </button>
-    </pip-add-image>
-
-    <img width="500" height="375" [src]="image" alt="Here will be picture!">
-</div>
-
-<pip-picture-edit></pip-picture-edit>
+<pip-picture-edit defaultIcon="face" (onImageLoad)="onImageLoad($event)" (onImageDelete)="onImageDelete($event)"></pip-picture-edit>

@@ -16,7 +16,7 @@ export class PipPictureComponent implements OnInit, AfterViewInit {
     @Input() set src(source: string) {
         this.source = source;
     }
-    @Input() defaultIcon: string;
+    @Input() defaultIcon: string = null;
     @Input() set backgroundColor(color: string) {
         this.renderer.setElementStyle(this.elRef.nativeElement, 'background-color', color);
     }
