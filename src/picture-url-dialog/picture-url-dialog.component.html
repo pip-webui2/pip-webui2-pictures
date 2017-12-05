@@ -1,0 +1,14 @@
+<h3>Link</h3>
+<mat-form-field class="input-container">
+    <input matInput placeholder="Image link..." [(ngModel)]="imageLink" >
+</mat-form-field>
+<pip-picture [src]="imageLink" (onImageLoad)="onImageLoad()" (onImageError)="onImageError()"></pip-picture>
+<div class="actions">
+    <div ></div>
+    <button mat-button (click)="onClose()">
+        Cancel
+    </button>
+    <button mat-button [disabled]="!imageLoaded" (click)="onSave()">
+        Add
+    </button>
+</div>

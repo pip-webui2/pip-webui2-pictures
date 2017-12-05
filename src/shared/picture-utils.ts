@@ -76,6 +76,80 @@ function objectToString(obj) {
     return result.substring(0, result.length - 1);
 }
 
+export function addPasteListener(onPaste) {
+    let pasteCatcher;
+
+    if (!window['Clipboard']) {
+        pasteCatcher = document.createElement("div");
+
+        // Firefox allows images to be pasted into contenteditable elements
+        pasteCatcher.setAttribute("contenteditable", "true");
+
+        // We can hide the element and append it to the body,
+        //pasteCatcher.style.opacity = 0;
+        let cssParams = {
+            "position": "absolute",
+            "left": "-999",
+            width: "0",
+            height: "0",
+            "overflow": "hidden",
+            outline: 0
+        };
+
+        pasteCatcher.style.cssText += objectToString(cssParams);
+        document.body.appendChild(pasteCatcher);
+    }
+
+    document.addEventListener('paste', function (event: any) {
+        if (event.clipboardData == null && event.originalEvent) {
+            event = event.originalEvent;
+        }
+
+        // Paste for chrome
+        if (event.clipboardData) {
+            var items = event.clipboardData.items;
+
+            _.each(items, function (item) {
+                if (item.type.indexOf("image") != -1) {
+                    var file = item.getAsFile();
+
+                    var fileReader = new FileReader();
+                    fileReader.onload = function (e) {
+                        setTimeout(() => {
+                            onPaste({ url: e.target['result'], file: file });
+                        }, 0);
+                    };
+                    fileReader.readAsDataURL(file);
+                }
+            });
+        }
+        // Paste for IE
+        else if (window['clipboardData'] && window['clipboardData'].files) {
+            _.each(window['clipboardData'].files, function (file) {
+                var fileReader = new FileReader();
+                fileReader.onload = (e) => {
+                    setTimeout(() => {
+                        onPaste({ url: e.target['result'], file: file });
+                    }, 0);
+                };
+                fileReader.readAsDataURL(file);
+            });
+        }
+    });
+
+    return pasteCatcher;
+};
+
+export function removePasteListener(pasteCatcher) {
+    if (!window['Clipboard']) {
+        if (pasteCatcher !== null) {
+            document.body.removeChild(pasteCatcher);
+            pasteCatcher = null;
+        }
+    }
+    document.removeEventListener('paste', () => {});
+};
+
 export let collageSchemes = [
     // 1
     [

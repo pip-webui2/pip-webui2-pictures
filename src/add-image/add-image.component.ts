@@ -1,6 +1,7 @@
 import { Component, Input, Output, OnInit, AfterViewInit, EventEmitter, Renderer, ElementRef, HostListener } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { PipCameraDialogComponent } from '../camera-dialog/camera-dialog.component';
+import { PipPictureUrlDialogComponent } from '../picture-url-dialog/picture-url-dialog.component';
 
 @Component({
     selector: 'pip-add-image',
@@ -26,6 +27,16 @@ export class PipAddImageComponent implements OnInit, AfterViewInit {
 
     public onCameraClick() {
         let dialogRef = this.dialog.open(PipCameraDialogComponent, {
+            data: { img: null }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (this.onImageLoad) this.onImageLoad.emit(result);
+        });
+    }
+
+    public onPictureUrlClick() {
+        let dialogRef = this.dialog.open(PipPictureUrlDialogComponent, {
             data: { img: null }
         });
 

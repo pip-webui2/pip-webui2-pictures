@@ -29,6 +29,8 @@ export class PipPictureComponent implements OnInit, AfterViewInit {
             this.elRef.nativeElement.querySelector('mat-icon'), 'opacity', opacity || this._defaultColorOpacity
         );
     }
+    @Output('onImageLoad') imageLoadEvent: EventEmitter<any> = new EventEmitter<any>();
+    @Output('onImageError') imageErrorEvent: EventEmitter<any> = new EventEmitter<any>();
 
     ngOnInit() {
         this._imageBlock = this.elRef.nativeElement.querySelector('img')
@@ -56,6 +58,7 @@ export class PipPictureComponent implements OnInit, AfterViewInit {
         setErrorImageCSS(image, {});
         image.style.cssText += 'display: none';
         this._defaultIconBlock.style.cssText += 'display: flex';
+        if (this.imageErrorEvent) this.imageErrorEvent.emit();
     }
 
     public onImageLoad($event) {
@@ -64,5 +67,6 @@ export class PipPictureComponent implements OnInit, AfterViewInit {
         setImageMarginCSS(this.elRef.nativeElement, image, {});
         image.style.cssText += 'display: flex';
         this._defaultIconBlock.style.cssText += 'display: none';
+        if (this.imageLoadEvent) this.imageLoadEvent.emit();
     };
 }

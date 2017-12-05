@@ -1,4 +1,5 @@
 import { Component, Input, Output, OnInit, AfterViewInit, EventEmitter, Renderer, ElementRef, HostListener } from '@angular/core';
+import { addPasteListener, removePasteListener } from '../shared/picture-utils';
 
 @Component({
     selector: 'pip-picture-edit',
@@ -9,6 +10,7 @@ export class PipPictureEditComponent implements OnInit, AfterViewInit {
     ngOnInit() { }
 
     public imageSource: string = null;
+    private _pasteElement: any = null;
 
     @Input() public defaultIcon: string = null;
     @Input() set src(source: string) {
@@ -27,7 +29,14 @@ export class PipPictureEditComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
+        this._pasteElement = addPasteListener((event) => {
+            this.imageSource = event.url;
+            this.imageLoadEvent.emit(event);
+        });
+    }
 
+    ngOnDestroy() {
+        removePasteListener(this._pasteElement);
     }
 
     public onImageLoad(results) {

@@ -6,6 +6,8 @@ import { MatButtonModule, MatIconModule, MatMenuModule, MatDialogModule } from '
 import { PipAddImageComponent } from './add-image.component';
 import { PipCameraDialogComponent } from '../camera-dialog/camera-dialog.component';
 import { PipCameraDialogModule } from '../camera-dialog/camera-dialog.module'
+import { PipPictureUrlDialogComponent } from '../picture-url-dialog/picture-url-dialog.component';
+import { PipPictureUrlDialogModule } from '../picture-url-dialog/picture-url-dialog.module'
 
 @NgModule({
   declarations: [
@@ -18,12 +20,13 @@ import { PipCameraDialogModule } from '../camera-dialog/camera-dialog.module'
     MatMenuModule,
     MatDialogModule,
 
-    PipCameraDialogModule
+    PipCameraDialogModule,
+    PipPictureUrlDialogModule
   ],
   exports: [
     PipAddImageComponent
   ],
   providers: [],
-  entryComponents: [PipCameraDialogComponent]
+  entryComponents: [PipCameraDialogComponent, PipPictureUrlDialogComponent]
 })
 export class PipAddImageModule { }

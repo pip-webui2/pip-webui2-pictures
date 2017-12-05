@@ -37,7 +37,9 @@ export class PipPictureListEditComponent implements OnInit, AfterViewInit {
         renderer.setElementClass(elRef.nativeElement, 'pip-picture-list-edit', true);
     }
 
-    ngAfterViewInit() { }
+    ngAfterViewInit() { 
+        
+    }
 
     public onImageLoad(event) {
         this.imageSources.push(event.url);
