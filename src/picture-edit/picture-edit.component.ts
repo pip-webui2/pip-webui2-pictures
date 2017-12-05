@@ -12,6 +12,7 @@ export class PipPictureEditComponent implements OnInit, AfterViewInit {
 
     @Input() public defaultIcon: string = null;
     @Input() set src(source: string) {
+        console.log('this.imageSource', this.imageSource);
         this.imageSource = source;
     }
 
@@ -30,12 +31,17 @@ export class PipPictureEditComponent implements OnInit, AfterViewInit {
     }
 
     public onImageLoad(results) {
+        if (!results || !results.img) return;
         this.imageSource = results.img.url;
         this.imageLoadEvent.emit(results.img);
     }
 
     public onDeleteClick(event) {
         event.cancelBubble = true;
+        this.removeImage();
+    }
+
+    public removeImage() {
         this.imageSource = null;
         this.imageDeleteEvent.emit();
     }

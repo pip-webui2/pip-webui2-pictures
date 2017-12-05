@@ -20,10 +20,14 @@ import { CollageExampleComponent } from './collage-example/collage-example.compo
 import { PictureEditExampleModule } from './picture-edit-example/picture-edit-example.module';
 import { PictureEditExampleComponent } from './picture-edit-example/picture-edit-example.component';
 
+import { PictureListEditExampleModule } from './picture-list-edit-example/picture-list-edit-example.module';
+import { PictureListEditExampleComponent } from './picture-list-edit-example/picture-list-edit-example.component';
+
 const appRoutes: Routes = [
   { path: 'picture', component: PictureExampleComponent },
   { path: 'collage', component: CollageExampleComponent },
   { path: 'picture_edit', component: PictureEditExampleComponent },
+  { path: 'picture_list_edit', component: PictureListEditExampleComponent },
   { path: '', pathMatch: 'full', redirectTo: 'picture' }
 ];
 
@@ -49,6 +53,7 @@ const appRoutes: Routes = [
     PictureExampleModule,
     CollageExampleModule,
     PictureEditExampleModule,
+    PictureListEditExampleModule,
 
     RouterModule.forRoot(appRoutes, { useHash: true })
   ],
