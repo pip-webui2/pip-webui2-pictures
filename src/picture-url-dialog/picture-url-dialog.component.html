@@ -1,14 +1,14 @@
-<h3>Link</h3>
+<h3>Insert image from url</h3>
 <mat-form-field class="input-container">
-    <input matInput placeholder="Image link..." [(ngModel)]="imageLink" >
+    <input matInput placeholder="URL" [(ngModel)]="imageLink" >
 </mat-form-field>
 <pip-picture [src]="imageLink" (onImageLoad)="onImageLoad()" (onImageError)="onImageError()"></pip-picture>
 <div class="actions">
     <div ></div>
     <button mat-button (click)="onClose()">
-        Cancel
+        CANCEL
     </button>
     <button mat-button [disabled]="!imageLoaded" (click)="onSave()">
-        Add
+        INSERT
     </button>
 </div>
