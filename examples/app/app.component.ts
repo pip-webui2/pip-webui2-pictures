@@ -3,7 +3,29 @@ import { MatSidenav } from '@angular/material';
 import { ObservableMedia, MediaChange } from "@angular/flex-layout";
 import { Router } from "@angular/router";
 import { PipThemesService, Theme } from 'pip-webui2-themes';
+import { TranslateService } from '@ngx-translate/core';
 import { ExmapleListItem } from "./examples-list/shared/examples-list.model";
+
+export const AppTranslations = {
+  en: {
+    'en': 'English',
+    'ru': 'Русский',
+    'EXAMPLES.EMPTY_STATES': 'Empty states',
+    'EXAMPLES.WITH_SOURCE_FILES': 'With source files',
+    'EXAMPLES.ITEM': 'item',
+    'EXAMPLES.ITEMS': 'items',
+    'EXAMPLES.ITEMS_MORE_THAN_4': 'items'
+  },
+  ru: {
+    'en': 'English',
+    'ru': 'Русский',
+    'EXAMPLES.EMPTY_STATES': 'Пустые состояния',
+    'EXAMPLES.WITH_SOURCE_FILES': 'С исходными файлами',
+    'EXAMPLES.ITEM': 'изображение',
+    'EXAMPLES.ITEMS': 'изображения',
+    'EXAMPLES.ITEMS_MORE_THAN_4': 'изображений'
+  }
+};
 
 @Component({
   selector: 'app-root',
@@ -13,11 +35,13 @@ import { ExmapleListItem } from "./examples-list/shared/examples-list.model";
 export class AppComponent {
   public listIndex: number = 0;
   public themes: Theme[];
-  public theme: Theme;
+  public selectedTheme: Theme;
   public activeMediaQuery: boolean;
   public mode: string;
   public app: string = 'Pictures';
   public url: string;
+  public langs: string[] = [];
+  public selectedLang: string = 'en';
 
   public list: any[] = [
     {
@@ -36,12 +60,19 @@ export class AppComponent {
   @ViewChild('sidenav') sidenav: MatSidenav;
 
   public constructor(
-    private service: PipThemesService,
+    private themeService: PipThemesService,
     private router: Router,
-    public media: ObservableMedia
+    public media: ObservableMedia,
+    private translate: TranslateService
   ) {
-    this.themes = this.service.themes;
-    this.theme = this.service.selectedTheme;
+    this.selectedTheme = this.themeService.selectedTheme;
+    this.themes = this.themeService.themes;
+
+    translate.setDefaultLang(this.selectedLang);
+    translate.use(this.selectedLang);
+    this.langs = translate.getLangs();
+    this.translate.setTranslation('en', AppTranslations.en, true);
+    this.translate.setTranslation('ru', AppTranslations.ru, true);
 
     media.subscribe((change: MediaChange) => {
       this.activeMediaQuery = change && change.mqAlias == 'xs' ? true : false;
@@ -70,10 +101,14 @@ export class AppComponent {
     this.sidenav.close();
   }
 
-  public changeTheme() {
-    console.log(this.theme);
-    this.service.selectedTheme = this.theme;
+  public changeTheme(theme) {
+    this.selectedTheme = theme;
+    this.themeService.selectedTheme = theme;
+  }
 
+  public changeLanguage(lang) {
+    this.selectedLang = lang;
+    this.translate.use(lang);
   }
 
 }

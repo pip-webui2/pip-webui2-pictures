@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule} from '@angular/router'
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CustomBreakPointsProvider } from './custom-breakpoints';
-import { MatToolbarModule, MatSelectModule, MatSidenavModule, MatIconModule,MatButtonModule } from '@angular/material';
+import { MatToolbarModule, MatSelectModule, MatSidenavModule, MatIconModule, MatButtonModule, MatMenuModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 import { PipThemesModule } from 'pip-webui2-themes';
 
 import { ExampleListModule } from './examples-list/examples-list.module';
@@ -46,7 +47,10 @@ const appRoutes: Routes = [
     MatIconModule,
     MatSidenavModule,
     MatButtonModule,
+    MatMenuModule,
     
+    TranslateModule.forRoot(),
+
     PipThemesModule,
 
     ExampleListModule,

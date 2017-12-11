@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { MatButtonModule, MatIconModule, MatDialogModule, MatInputModule } from '@angular/material';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 import { PipPictureModule } from '../picture/picture.module';
 import { PipPictureUrlDialogComponent } from './picture-url-dialog.component';
 
@@ -19,6 +21,7 @@ import { PipPictureUrlDialogComponent } from './picture-url-dialog.component';
     MatIconModule,
     MatDialogModule,
     MatInputModule,
+    TranslateModule,
 
     PipPictureModule
   ],

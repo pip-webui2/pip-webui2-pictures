@@ -1,5 +1,7 @@
 import { Component, Inject, Renderer, ElementRef } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { PictureUrlDialogTranslations } from './shared/picture-url-dialog.translations';
+import { TranslateService } from '@ngx-translate/core';
 
 /**
  * @title Dialog Overview
@@ -18,8 +20,12 @@ export class PipPictureUrlDialogComponent {
         public dialogRef: MatDialogRef<PipPictureUrlDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any,
         private renderer: Renderer,
-        private elRef: ElementRef
-    ) { }
+        private elRef: ElementRef,
+        private translate: TranslateService
+    ) {
+        this.translate.setTranslation('en', PictureUrlDialogTranslations.en, true);
+        this.translate.setTranslation('ru', PictureUrlDialogTranslations.ru, true);
+    }
 
     public onImageLoad() {
         this.imageLoaded = true;

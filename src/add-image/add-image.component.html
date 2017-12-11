@@ -2,6 +2,6 @@
     <ng-content></ng-content>
 </div>
 <mat-menu #addImage="matMenu">
-    <button mat-menu-item (click)="onCameraClick()">Camera</button>
-    <button mat-menu-item (click)="onPictureUrlClick()">Picture link</button>
+    <button mat-menu-item (click)="onCameraClick()">{{ 'PICTURES.FROM_CAMERA' | translate }}</button>
+    <button mat-menu-item (click)="onPictureUrlClick()">{{ 'PICTURES.FROM_LINK' | translate }}</button>
 </mat-menu>

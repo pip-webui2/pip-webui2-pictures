@@ -3,7 +3,8 @@ import { MatDialog } from '@angular/material';
 import { PipCameraDialogComponent } from '../camera-dialog/camera-dialog.component';
 import { PipPictureUrlDialogComponent } from '../picture-url-dialog/picture-url-dialog.component';
 import { MatMenuTrigger } from '@angular/material'
-
+import { AddImageTranslations } from './shared/add-image.translations';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'pip-add-image',
@@ -19,13 +20,17 @@ export class PipAddImageComponent implements OnInit, AfterViewInit {
     constructor(
         private renderer: Renderer,
         private elRef: ElementRef,
-        private dialog: MatDialog
+        private dialog: MatDialog,
+        private translate: TranslateService
     ) {
         renderer.setElementClass(elRef.nativeElement, 'pip-add-image', true);
+
+        this.translate.setTranslation('en', AddImageTranslations.en, true);
+        this.translate.setTranslation('ru', AddImageTranslations.ru, true);
     }
 
     ngAfterViewInit() {
-        
+
     }
 
     public onCameraClick() {

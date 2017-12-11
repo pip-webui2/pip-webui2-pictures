@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule, MatIconModule, MatMenuModule, MatDialogModule } from '@angular/material';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 import { PipAddImageComponent } from './add-image.component';
 import { PipCameraDialogComponent } from '../camera-dialog/camera-dialog.component';
 import { PipCameraDialogModule } from '../camera-dialog/camera-dialog.module'
@@ -19,6 +21,8 @@ import { PipPictureUrlDialogModule } from '../picture-url-dialog/picture-url-dia
     MatIconModule,
     MatMenuModule,
     MatDialogModule,
+
+    TranslateModule,
 
     PipCameraDialogModule,
     PipPictureUrlDialogModule

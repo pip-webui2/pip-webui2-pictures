@@ -2,6 +2,8 @@ import { Component, Inject, Renderer, ElementRef } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { WebCamComponent } from 'ack-angular-webcam';
+import { CameraDialogTranslations } from './shared/camera-dialog.translations';
+import { TranslateService } from '@ngx-translate/core';
 /**
  * @title Dialog Overview
  */
@@ -28,21 +30,20 @@ export class PipCameraDialogComponent {
     public dialogRef: MatDialogRef<PipCameraDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private renderer: Renderer,
-    private elRef: ElementRef
-  ) {
-
+    private elRef: ElementRef,
+    private translate: TranslateService
+  ) { 
+    this.translate.setTranslation('en', CameraDialogTranslations.en, true);
+    this.translate.setTranslation('ru', CameraDialogTranslations.ru, true);
   }
 
   ngAfterViewInit() {
     this.renderer.setElementStyle(this.elRef.nativeElement.parentElement, 'padding', '24px 0');
   }
 
-  public onSuccess(stream: MediaStream) {
+  public onSuccess(stream: MediaStream) { };
+  public onError(err) { };
 
-  };
-  public onError(err) {
-
-  };
   public onCapture() {
     const canvas = this.elRef.nativeElement.getElementsByTagName('canvas')[0];
 

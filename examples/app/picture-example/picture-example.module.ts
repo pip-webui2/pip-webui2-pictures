@@ -4,6 +4,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { MatButtonModule, MatIconModule, MatButtonToggleModule } from '@angular/material';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 import { PictureExampleComponent } from './picture-example.component';
 import { PipPictureModule } from '../pip-webui2-pictures';
 
@@ -19,6 +21,8 @@ import { PipPictureModule } from '../pip-webui2-pictures';
     MatButtonModule,
     MatIconModule,
     MatButtonToggleModule,
+
+    TranslateModule,
 
     PipPictureModule
   ],

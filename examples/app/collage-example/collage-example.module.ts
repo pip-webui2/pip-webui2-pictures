@@ -4,6 +4,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { MatButtonModule, MatIconModule, MatButtonToggleModule } from '@angular/material';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 import { CollageExampleComponent } from './collage-example.component';
 import { PipCollageModule } from '../pip-webui2-pictures';
 
@@ -19,6 +21,8 @@ import { PipCollageModule } from '../pip-webui2-pictures';
     MatButtonModule,
     MatIconModule,
     MatButtonToggleModule,
+
+    TranslateModule,
 
     PipCollageModule
   ],
