@@ -6,6 +6,7 @@ import { MatMenuTrigger } from '@angular/material'
 import { AddImageTranslations } from './shared/add-image.translations';
 import { TranslateService } from '@ngx-translate/core';
 
+
 @Component({
     selector: 'pip-add-image',
     templateUrl: 'add-image.component.html',

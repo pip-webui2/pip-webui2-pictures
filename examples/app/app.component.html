@@ -25,7 +25,7 @@
             </button>
             <mat-menu #menu="matMenu">
                 <button *ngFor="let theme of themes" mat-menu-item (click)="changeTheme(theme)">
-                    {{ theme.name }}
+                    {{ theme?.name }}
                     <mat-icon *ngIf="theme === selectedTheme" style="margin-bottom: 10px">check</mat-icon>
                 </button>
             </mat-menu>
@@ -39,7 +39,7 @@
                       overflow: auto">
             <mat-toolbar color="primary">
                 <span fxLayout="row" fxLayoutAlign="start center" fxFlex="grow">
-                    {{list[listIndex].name}}
+                    {{list[listIndex]?.name}}
                 </span>
             </mat-toolbar>
             <div class="router">

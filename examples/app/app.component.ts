@@ -33,7 +33,6 @@ export const AppTranslations = {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public listIndex: number = 0;
   public themes: Theme[];
   public selectedTheme: Theme;
   public activeMediaQuery: boolean;
@@ -57,6 +56,7 @@ export class AppComponent {
       name: 'Picture List Edit', id: 'picture_list_edit', route: 'picture_list_edit'
     }
   ];
+  public listIndex: number = 0;
   @ViewChild('sidenav') sidenav: MatSidenav;
 
   public constructor(
@@ -80,12 +80,12 @@ export class AppComponent {
     })
 
     router.events.subscribe((url: any) => {
-
       if (url.url && url.url != this.url) {
         this.url = url.url;
         this.listIndex = this.list.findIndex((item) => {
           return "/" + item.route == this.url;
         })
+        if (this.listIndex < 0) this.listIndex = 1;
       }
     });
 
