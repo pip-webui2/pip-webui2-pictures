@@ -1,4 +1,4 @@
-<div pipFocused [dynamicTrigger]="imageSources.length" (onDeletePress)="onDeletePress($event)">
+<div pipFocused [dynamicTrigger]="imageSources?.length" (onDeletePress)="onDeletePress($event)">
     <div [@fadeIn]="''" *ngFor="let imageSource of imageSources; let i = index" class="pip-focusable" tabindex="-1">
         <pip-picture class="square-l" [src]="imageSource" [defaultIcon]="defaultIcon"></pip-picture>
         <button tabindex="-1" mat-icon-button class="delete-button" (click)="onDeleteClick(i)"><mat-icon>clear</mat-icon></button>
