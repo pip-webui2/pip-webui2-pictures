@@ -1,1 +1,12 @@
 
+.special {
+    width: 100px;
+    height: 100px;
+}
+
+@media (max-width: 1000px) {
+    .special {
+        width: 100%;
+        height: 200px;
+    }
+}

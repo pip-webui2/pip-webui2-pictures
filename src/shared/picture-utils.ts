@@ -39,13 +39,13 @@ export function setImageMarginCSS(element, image, params) {
         cssParams['margin-left'] = '' + margin + 'px';
         cssParams['height'] = '' + containerHeight + 'px';//'100%';
         cssParams['width'] = '' + imageWidth * containerHeight / imageHeight + 'px';//'100%';
-        cssParams['margin-top'] = '';
+        cssParams['margin-top'] = 0;
     } else {
         margin = -((imageHeight / imageWidth * containerWidth - containerHeight) / 2);
         cssParams['margin-top'] = '' + margin + 'px';
         cssParams['height'] = '' + imageHeight * containerWidth / imageWidth + 'px';//'100%';
         cssParams['width'] = '' + containerWidth + 'px';//'100%';
-        cssParams['margin-left'] = '';
+        cssParams['margin-left'] = 0;
     }
 
     if (params) cssParams = _.assign(cssParams, params);
@@ -65,6 +65,22 @@ export function setErrorImageCSS(image, params) {
 
     if (image) image.style.cssText += objectToString(cssParams);
 };
+
+export function setErrorIconCSS(element, icon, params) {
+    let
+        containerWidth = element.width ? element.width() : element.clientWidth,
+        containerHeight = element.height ? element.height() : element.clientHeight;
+    let cssParams = {};
+    let value = Math.min(containerHeight, containerWidth) / 2;
+
+    cssParams['width'] = value + 'px';
+    cssParams['height'] = value + 'px';
+    cssParams['font-size'] = (value) + 'px';
+
+    if (params) cssParams = _.assign(cssParams, params);
+
+    icon.style.cssText += objectToString(cssParams);
+}
 
 function objectToString(obj) {
     let result = '';
@@ -140,6 +156,21 @@ export function addPasteListener(onPaste) {
     return pasteCatcher;
 };
 
+export function debounce(func, wait, immediate = false) {
+    var timeout;
+    return function () {
+        var context = this, args = arguments;
+        var later = function () {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+};
+
 export function removePasteListener(pasteCatcher) {
     if (!window['Clipboard']) {
         if (pasteCatcher !== null) {
@@ -147,7 +178,7 @@ export function removePasteListener(pasteCatcher) {
             pasteCatcher = null;
         }
     }
-    document.removeEventListener('paste', () => {});
+    document.removeEventListener('paste', () => { });
 };
 
 export let collageSchemes = [
