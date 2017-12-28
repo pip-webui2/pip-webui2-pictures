@@ -62,7 +62,7 @@ export class PipPictureComponent implements OnInit, AfterViewInit {
             } else {
                 setErrorIconCSS(this.elRef.nativeElement, this._icon, {});
             }
-        }, 100)
+        }, 20);
     }
 
     ngAfterViewInit() {
