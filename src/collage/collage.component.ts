@@ -1,4 +1,3 @@
-import * as _ from 'lodash';
 import { Component, Input, Output, OnInit, AfterViewInit, EventEmitter, Renderer, ElementRef, HostListener } from '@angular/core';
 import { collageSchemes } from '../shared/picture-utils';
 
@@ -82,9 +81,13 @@ export class PipCollageComponent implements OnInit, AfterViewInit {
     private getSchemeByNumber(count: number) {
         let variants = collageSchemes[count];
         let variantsCount = variants.length;
-        let randomIndex = _.random(0, variantsCount - 1, false);
+        let randomIndex = Math.round(this.random(0, variantsCount - 1));
 
         return variants[randomIndex];
+    }
+
+    private random(min, max) {
+        return Math.random() * (max - min) + min;
     }
 
     public get tables() {

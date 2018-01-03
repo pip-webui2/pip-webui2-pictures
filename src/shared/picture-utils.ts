@@ -1,5 +1,3 @@
-import * as _ from 'lodash';
-
 export function setIconMarginCSS(container, icon) {
     let
         containerWidth = container.clientWidth ? container.clientWidth : container.width,
@@ -48,7 +46,7 @@ export function setImageMarginCSS(element, image, params) {
         cssParams['margin-left'] = 0;
     }
 
-    if (params) cssParams = _.assign(cssParams, params);
+    if (params) cssParams = Object.assign(cssParams, params);
 
     image.style.cssText += objectToString(cssParams);
 };
@@ -61,7 +59,7 @@ export function setErrorImageCSS(image, params) {
         'margin-top': ''
     };
 
-    if (params) cssParams = _.assign(cssParams, params);
+    if (params) cssParams = Object.assign(cssParams, params);
 
     if (image) image.style.cssText += objectToString(cssParams);
 };
@@ -77,7 +75,7 @@ export function setErrorIconCSS(element, icon, params) {
     cssParams['height'] = value + 'px';
     cssParams['font-size'] = (value) + 'px';
 
-    if (params) cssParams = _.assign(cssParams, params);
+    if (params) cssParams = Object.assign(cssParams, params);
 
     icon.style.cssText += objectToString(cssParams);
 }
@@ -124,8 +122,8 @@ export function addPasteListener(onPaste) {
         // Paste for chrome
         if (event.clipboardData) {
             var items = event.clipboardData.items;
-
-            _.each(items, function (item) {
+            for (let i = 0; i < items.length; i++) {
+                let item = items[i];
                 if (item.type.indexOf("image") != -1) {
                     var file = item.getAsFile();
 
@@ -137,11 +135,12 @@ export function addPasteListener(onPaste) {
                     };
                     fileReader.readAsDataURL(file);
                 }
-            });
+            }
         }
         // Paste for IE
         else if (window['clipboardData'] && window['clipboardData'].files) {
-            _.each(window['clipboardData'].files, function (file) {
+            for (let i = 0; i < window['clipboardData'].files.length; i++) {
+                let file = window['clipboardData'].files[i];
                 var fileReader = new FileReader();
                 fileReader.onload = (e) => {
                     setTimeout(() => {
@@ -149,7 +148,7 @@ export function addPasteListener(onPaste) {
                     }, 0);
                 };
                 fileReader.readAsDataURL(file);
-            });
+            }
         }
     });
 
