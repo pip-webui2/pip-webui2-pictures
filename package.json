@@ -31,8 +31,8 @@
     "core-js": "^2.5.3",
     "hammerjs": "^2.0.8",
     "immutable": "^3.8.2",
-    "pip-webui2-behaviors": "git+https://github.com/pip-webui2/pip-webui2-behaviors.git",
-    "pip-webui2-themes": "git+https://github.com/pip-webui2/pip-webui2-themes.git",
+    "pip-webui2-behaviors": "*",
+    "pip-webui2-themes": "*",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"
   },
