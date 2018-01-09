@@ -15,6 +15,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class PipAddImageComponent implements OnInit, AfterViewInit {
     ngOnInit() { }
     @ViewChild(MatMenuTrigger) public menu: MatMenuTrigger;
+    @ViewChild('fileInput') fileInput: any;
 
     @Output() onImageLoad: EventEmitter<any> = new EventEmitter<any>();
 
@@ -52,5 +53,23 @@ export class PipAddImageComponent implements OnInit, AfterViewInit {
         dialogRef.afterClosed().subscribe(result => {
             if (this.onImageLoad) this.onImageLoad.emit(result);
         });
+    }
+
+    public onUploadClick(e, fileInput) {
+        let file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+        if (!file) return;
+
+        let reader = new FileReader();
+
+        reader.onloadend = (result: any) => {
+            if (this.onImageLoad) this.onImageLoad.emit({
+                img: {
+                    url: result.target.result,
+                    name: file.name
+                }
+            });
+            this.fileInput.nativeElement.value = "";
+        }
+        reader.readAsDataURL(file);
     }
 }

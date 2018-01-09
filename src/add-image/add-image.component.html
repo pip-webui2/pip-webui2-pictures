@@ -4,4 +4,8 @@
 <mat-menu #addImage="matMenu">
     <button mat-menu-item (click)="onCameraClick()">{{ 'PICTURES.FROM_CAMERA' | translate }}</button>
     <button mat-menu-item (click)="onPictureUrlClick()">{{ 'PICTURES.FROM_LINK' | translate }}</button>
+    <button mat-menu-item>
+        <input #fileInput type="file" name="file" (change)="onUploadClick($event, fileInput)">
+        {{ 'PICTURES.FROM_FILE' | translate }}
+    </button>
 </mat-menu>
