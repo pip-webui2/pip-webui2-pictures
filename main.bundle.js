@@ -2153,17 +2153,18 @@ var PipPictureUrlDialogComponent = /** @class */ (function () {
         this.translate.setTranslation('ru', __WEBPACK_IMPORTED_MODULE_2__shared_picture_url_dialog_translations__["a" /* PictureUrlDialogTranslations */].ru, true);
     }
     PipPictureUrlDialogComponent.prototype.onImageLoad = function (event) {
-        // var canvas = document.createElement('canvas'), context = canvas.getContext('2d');
-        // canvas.width = event.image.width;
-        // canvas.height = event.image.height;
-        // context.drawImage(event.image, 0, 0, event.image.width, event.image.height);
-        // canvas.toBlob((result) => {
-        //     this.dataUrl = result;
-        //     console.log('this.dataUrl', this.dataUrl);
-        // });
-        // console.log('canvas', event.image.__proto__);
-        // console.log('this.dataUrl', this.dataUrl);
-        this.saveFile(this.imageLink);
+        var _this = this;
+        var canvas = document.createElement('canvas'), context = canvas.getContext('2d');
+        canvas.width = event.image.width;
+        canvas.height = event.image.height;
+        context.drawImage(event.image, 0, 0, event.image.width, event.image.height);
+        canvas.toBlob(function (result) {
+            _this.dataUrl = result;
+            console.log('this.dataUrl', _this.dataUrl);
+        });
+        console.log('canvas', event.image.__proto__);
+        console.log('this.dataUrl', this.dataUrl);
+        //this.saveFile(this.imageLink);
         this.imageLoaded = true;
     };
     PipPictureUrlDialogComponent.prototype.saveFile = function (url) {
