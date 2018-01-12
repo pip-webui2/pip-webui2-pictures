@@ -15,6 +15,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class PipPictureUrlDialogComponent {
     public imageLink: string = null;
     public imageLoaded: boolean = false;
+    private dataUrl: any = null;
 
     constructor(
         public dialogRef: MatDialogRef<PipPictureUrlDialogComponent>,
@@ -27,11 +28,13 @@ export class PipPictureUrlDialogComponent {
         this.translate.setTranslation('ru', PictureUrlDialogTranslations.ru, true);
     }
 
-    public onImageLoad() {
+    public onImageLoad(event) {
+        this.dataUrl = this.imageLink;
         this.imageLoaded = true;
     }
 
     public onImageError() {
+        this.dataUrl = null;
         this.imageLoaded = false;
     }
 
@@ -40,7 +43,7 @@ export class PipPictureUrlDialogComponent {
     }
 
     public onSave() {
-        this.data.img = { url: this.imageLink }
+        this.data.img = { url: this.dataUrl }
         this.dialogRef.close(this.data);
     }
 

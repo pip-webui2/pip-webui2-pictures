@@ -79,7 +79,7 @@ export class PipPictureComponent implements OnInit, AfterViewInit {
         this._image.style.cssText += 'display: none';
         this._defaultIconBlock.style.cssText += 'display: flex';
         this._loaded = false;
-        if (this.imageErrorEvent) this.imageErrorEvent.emit();
+        if (this.imageErrorEvent) this.imageErrorEvent.emit({ event: $event, image: this._image });
     }
 
     public onImageLoad($event) {
@@ -89,7 +89,7 @@ export class PipPictureComponent implements OnInit, AfterViewInit {
         this._image.style.cssText += 'display: flex';
         this._defaultIconBlock.style.cssText += 'display: none';
         this._loaded = true;
-        if (this.imageLoadEvent) this.imageLoadEvent.emit();
+        if (this.imageLoadEvent) this.imageLoadEvent.emit({ event: $event, image: this._image });
     };
 
     ngOnDestroy() {
