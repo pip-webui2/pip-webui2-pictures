@@ -25,6 +25,8 @@ export class PipPictureListEditComponent implements OnInit, AfterViewInit {
     @Input() set srcs(sources: string[]) {
         this.imageSources = sources;
     }
+    @Input() width: number | string = '80px';
+    @Input() height: number | string = '80px';
     @Input() defaultIcon: string = null;
     @Input() defaultAddIcon: string = 'add';
     @ViewChild(PipPictureEditComponent) private _editComponent: PipPictureEditComponent;

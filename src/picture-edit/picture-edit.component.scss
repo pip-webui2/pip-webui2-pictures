@@ -75,6 +75,10 @@
     height: 80px;
     display: block;
     box-sizing: content-box;
+    .pip-picture {
+        width: 100%;
+        height: 100%;
+    }
     .pip-add-image {
         position: relative;
         display: block;
