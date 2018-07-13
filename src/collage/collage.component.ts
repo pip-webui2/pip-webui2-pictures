@@ -61,8 +61,6 @@ export class PipCollageComponent implements OnInit, AfterViewInit {
             rowHeight: this._containerHeight / schema.rowHeightDivider + 'px',
             tiles: this.filTiles(sources, schema.pictures)
         });
-
-        console.log('this._tables', this._tables);
     }
 
     private filTiles(sources: any[], schemaPictures: any[]) {

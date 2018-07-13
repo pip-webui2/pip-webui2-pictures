@@ -15,7 +15,6 @@ export class PipPictureEditComponent implements OnInit, AfterViewInit {
 
     @Input() public defaultIcon: string = null;
     @Input() set src(source: string) {
-        console.log('this.imageSource', this.imageSource);
         this.imageSource = source;
     }
 
