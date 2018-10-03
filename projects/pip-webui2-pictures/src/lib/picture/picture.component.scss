@@ -1,0 +1,150 @@
+@import '~@angular/material/theming';
+@import '~pip-webui2-themes-temp/styles.scss';
+@include mat-core();
+@mixin picture-mixin($theme) {
+    $foreground: map-get($theme, foreground);
+    $background: map-get($theme, background);
+    :host.pip-picture {
+        color: mat-color($foreground, text);
+        background: invert(mat-color($background, card, 0.054));
+    }
+}
+
+.unicorn-dark-theme {
+    @include picture-mixin($dark-theme);
+}
+
+.candy-theme {
+    @include picture-mixin($candy-app-theme);
+}
+
+.pip-blue-theme {
+    @include picture-mixin($pip-blue-theme);
+}
+
+.pip-grey-theme {
+    @include picture-mixin($pip-grey-theme);
+}
+
+.pip-navy-theme {
+    @include picture-mixin($pip-navy-theme);
+}
+
+.pip-amber-theme {
+    @include picture-mixin($pip-amber-theme);
+}
+
+.pip-green-theme {
+    @include picture-mixin($pip-green-theme);
+}
+
+.pip-orange-theme {
+    @include picture-mixin($pip-orange-theme);
+}
+
+.pip-pink-theme {
+    @include picture-mixin($pip-pink-theme);
+}
+
+.pip-dark-theme {
+    @include picture-mixin($pip-dark-theme);
+}
+
+.pip-black-theme {
+    @include picture-mixin($pip-black-theme);
+}
+
+.bootbarn-warm-theme {
+    @include picture-mixin($bootbarn-warm-theme);
+}
+
+.bootbarn-cool-theme {
+    @include picture-mixin($bootbarn-cool-theme);
+}
+
+.bootbarn-mono-theme {
+    @include picture-mixin($bootbarn-mono-theme);
+}
+
+$xl: 120px;
+$l: 80px;
+$m: 64px;
+$s: 40px;
+$xs: 24px;
+:host.pip-picture {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    &.square-xs {
+        width: $xs;
+        height: $xs;
+        mat-icon {
+            font-size: $xs / 1.5;
+            width: $xs / 1.5;
+            height: $xs / 1.5;
+        }
+    }
+    &.square-s {
+        width: $s;
+        height: $s;
+        mat-icon {
+            font-size: $s / 2;
+            width: $s / 2;
+            height: $s / 2;
+        }
+    }
+    &.square-m {
+        width: $m;
+        height: $m;
+        mat-icon {
+            font-size: $m / 2;
+            width: $m / 2;
+            height: $m / 2;
+        }
+    }
+    &.square-l {
+        width: $l;
+        height: $l;
+        mat-icon {
+            font-size: $l / 2;
+            width: $l / 2;
+            height: $l / 2;
+        }
+    }
+    &.square-xl {
+        width: $xl;
+        height: $xl;
+        mat-icon {
+            font-size: $xl / 2;
+            width: $xl / 2;
+            height: $xl / 2;
+        }
+    }
+    &.rounded {
+        border-radius: 50%;
+    }
+    &>img {
+        display: block;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: auto;
+    }
+    &>div {
+        box-sizing: border-box;
+        flex: 1 1 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 100%;
+        overflow-y: hidden;
+        place-content: center;
+        align-items: center;
+        position: absolute;
+        display: none;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+    }
+}

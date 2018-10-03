@@ -31,3 +31,19 @@ No breaking changes in this version
 
 #### Bug Fixes
 No fixes in this version
+
+## <a name="1.0.0"></a> 1.0.0 (2018-10-03)
+
+Update to Angular 6
+
+### Features
+* **picture**: picture view and edit controls
+* **picture list**: picture list edit control
+* **collage**: collage control
+* **add image**: menu to add pictures from file, camera, weblink
+
+### Breaking Changes
+No breaking changes in this version
+
+#### Bug Fixes
+No fixes in this version

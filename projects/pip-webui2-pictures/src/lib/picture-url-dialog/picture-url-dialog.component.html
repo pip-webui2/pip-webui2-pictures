@@ -1,0 +1,14 @@
+<h3>{{ 'PICTURES.GET_IMAGE_FROM_URL' | translate }}</h3>
+<mat-form-field class="input-container">
+    <input matInput placeholder="{{ 'PICTURES.URL' | translate }}" [(ngModel)]="imageLink">
+</mat-form-field>
+<pip-picture [src]="imageLink" (onImageLoad)="onImageLoad($event)" (onImageError)="onImageError()"></pip-picture>
+<div class="actions">
+    <div></div>
+    <button mat-button (click)="onClose()">
+        CANCEL
+    </button>
+    <button mat-button [disabled]="!imageLoaded" (click)="onSave()">
+        INSERT
+    </button>
+</div>
