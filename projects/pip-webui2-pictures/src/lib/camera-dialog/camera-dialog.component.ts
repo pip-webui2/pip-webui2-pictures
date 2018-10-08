@@ -1,7 +1,7 @@
 import { Component, Inject, Renderer, ElementRef, AfterViewInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { WebCamComponent } from 'ack-angular-webcam';
 import { TranslateService } from '@ngx-translate/core';
+import { WebCamComponent } from 'ack-angular-webcam';
 
 import { CameraDialogTranslations } from './shared/camera-dialog.translations';
 /**

@@ -1,6 +1,7 @@
 {
   "name": "pip-webui2-pictures",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -28,8 +29,8 @@
     "@ngx-translate/core": "^10.0.2",
     "ack-angular-webcam": "^1.9.3",
     "core-js": "^2.5.4",
-    "pip-webui2-behaviors-temp": "^1.0.0-beta.3",
-    "pip-webui2-themes-temp": "^1.0.0-beta.2",
+    "pip-webui2-behaviors": "^1.0.0",
+    "pip-webui2-themes": "^1.0.1",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26"
   },

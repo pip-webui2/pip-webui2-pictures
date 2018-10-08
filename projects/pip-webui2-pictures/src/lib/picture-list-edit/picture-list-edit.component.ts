@@ -15,6 +15,7 @@ import {
     ElementRef,
     ViewChild
 } from '@angular/core';
+
 import { PipPictureEditComponent } from '../picture-edit/picture-edit.component';
 
 @Component({

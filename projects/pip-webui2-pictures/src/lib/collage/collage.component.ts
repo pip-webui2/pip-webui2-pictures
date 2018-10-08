@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, AfterViewInit, Renderer, ElementRef } from '@angular/core';
+
 import { collageSchemes } from '../shared/picture-utils';
 
 @Component({

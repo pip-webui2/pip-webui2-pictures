@@ -1,5 +1,5 @@
 @import '~@angular/material/theming';
-@import '~pip-webui2-themes-temp/styles.scss';
+@import '~pip-webui2-themes/styles.scss';
 @include mat-core();
 @mixin picture-mixin($theme) {
     $foreground: map-get($theme, foreground);

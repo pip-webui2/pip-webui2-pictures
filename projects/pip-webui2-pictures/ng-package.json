@@ -3,5 +3,9 @@
   "dest": "../../dist/pip-webui2-pictures",
   "lib": {
     "entryFile": "src/public_api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "ack-angular-webcam",
+    "^pip-webui2"
+  ]
 }

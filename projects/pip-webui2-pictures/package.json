@@ -1,9 +1,15 @@
 {
   "name": "pip-webui2-pictures",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0",
+  "license": "MIT",
   "repository": {
     "type" : "git",
     "url" : "https://github.com/pip-webui2/pip-webui2-pictures"
+  },
+  "dependencies": {
+    "ack-angular-webcam": "^1.9.3",
+    "pip-webui2-behaviors": "^1.0.0",
+    "pip-webui2-themes": "^1.0.1"
   },
   "peerDependencies": {
     "@angular/animations": "^6.1.0",
@@ -11,9 +17,6 @@
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/material": "^6.4.7",
-    "@ngx-translate/core": "^10.0.2",
-    "ack-angular-webcam": "^1.9.3",
-    "pip-webui2-behaviors-temp": "^1.0.0-beta.3",
-    "pip-webui2-themes-temp": "^1.0.0-beta.2"
+    "@ngx-translate/core": "^10.0.2"
   }
 }

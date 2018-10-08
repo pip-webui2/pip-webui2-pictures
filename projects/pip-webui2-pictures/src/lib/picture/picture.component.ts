@@ -10,6 +10,7 @@ import {
     ElementRef,
     ChangeDetectorRef
 } from '@angular/core';
+
 import { setImageMarginCSS, setErrorImageCSS, setErrorIconCSS, debounce } from '../shared/picture-utils';
 
 @Component({

@@ -1,4 +1,5 @@
 import { Component, Input, Output, OnInit, OnDestroy, AfterViewInit, ViewChild, EventEmitter, Renderer, ElementRef } from '@angular/core';
+
 import { addPasteListener, removePasteListener } from '../shared/picture-utils';
 import { PipAddImageComponent } from '../add-image/add-image.component';
 
