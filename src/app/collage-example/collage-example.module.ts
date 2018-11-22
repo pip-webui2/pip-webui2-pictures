@@ -8,7 +8,7 @@ import { CollageExampleComponent } from './collage-example.component';
 @NgModule({
   imports: [
     CommonModule,
-    TranslateModule,
+    TranslateModule.forChild(),
 
     PipCollageModule
   ],

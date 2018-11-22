@@ -1,4 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material';
+import { TranslateModule } from '@ngx-translate/core';
+import { PipPictureModule } from 'pip-webui2-pictures';
 
 import { PictureExampleComponent } from './picture-example.component';
 
@@ -8,9 +12,16 @@ describe('PictureExampleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PictureExampleComponent ]
+      declarations: [PictureExampleComponent],
+      imports: [
+        CommonModule,
+        MatCardModule,
+        TranslateModule.forRoot(),
+
+        PipPictureModule
+      ],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

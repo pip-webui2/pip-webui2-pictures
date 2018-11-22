@@ -144,7 +144,8 @@
           "options": {
             "main": "projects/pip-webui2-pictures/src/test.ts",
             "tsConfig": "projects/pip-webui2-pictures/tsconfig.spec.json",
-            "karmaConfig": "projects/pip-webui2-pictures/karma.conf.js"
+            "karmaConfig": "projects/pip-webui2-pictures/karma.conf.js",
+            "codeCoverage": true
           }
         },
         "lint": {

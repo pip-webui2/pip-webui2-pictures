@@ -10,7 +10,7 @@ import { PictureExampleComponent } from './picture-example.component';
   imports: [
     CommonModule,
     MatCardModule,
-    TranslateModule,
+    TranslateModule.forChild(),
 
     PipPictureModule
   ],
