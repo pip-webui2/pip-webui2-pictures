@@ -6,6 +6,7 @@
   },
   "whitelistedNonPeerDependencies": [
     "ack-angular-webcam",
+    "@ngx-translate",
     "^pip-webui2"
   ]
 }

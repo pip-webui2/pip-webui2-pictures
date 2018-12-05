@@ -15,31 +15,31 @@ import { PictureExampleModule } from './picture-example/picture-example.module';
 import { PictureListEditExampleModule } from './picture-list-edit-example/picture-list-edit-example.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FlexLayoutModule,
-    MatToolbarModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatButtonModule,
-    MatMenuModule,
-    TranslateModule.forRoot(),
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        FlexLayoutModule,
+        MatToolbarModule,
+        MatSelectModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatButtonModule,
+        MatMenuModule,
+        TranslateModule.forRoot(),
 
-    PipThemesModule,
+        PipThemesModule.forRoot(),
 
-    AppRoutingModule,
-    ExamplesListModule,
-    CollageExampleModule,
-    PictureEditExampleModule,
-    PictureExampleModule,
-    PictureListEditExampleModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+        AppRoutingModule,
+        ExamplesListModule,
+        CollageExampleModule,
+        PictureEditExampleModule,
+        PictureExampleModule,
+        PictureListEditExampleModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

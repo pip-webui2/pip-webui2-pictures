@@ -65,3 +65,19 @@ No breaking changes in this version
 * Library tests works now. Run `npm run test:lib` to check it out;
 * Example tests works now. Run `npm run test` to check it out;
 * E2E tests works too. Run `npm run e2e` to check it out.
+
+## <a name="1.1.1"></a> 1.1.1 (2018-12-05)
+
+Angular minor changes; example update
+
+### Features
+* **picture**: picture view and edit controls
+* **picture list**: picture list edit control
+* **collage**: collage control
+* **add image**: menu to add pictures from file, camera, weblink
+
+### Breaking Changes
+No breaking changes in this version
+
+#### Bug Fixes
+No fixes in this version
