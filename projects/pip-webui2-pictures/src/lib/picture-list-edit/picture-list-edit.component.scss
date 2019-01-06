@@ -1,6 +1,5 @@
-@import '~@angular/material/theming';
-@import '~pip-webui2-themes/styles.scss';
-@include mat-core();
+@import '~pip-webui2-themes/variables';
+
 @mixin picture-list-edit-mixin($theme) {
     $foreground: map-get($theme, foreground);
     $background: map-get($theme, background);
@@ -17,60 +16,10 @@
     }
 }
 
-.unicorn-dark-theme {
-    @include picture-list-edit-mixin($dark-theme);
-}
-
-.candy-theme {
-    @include picture-list-edit-mixin($candy-app-theme);
-}
-
-.pip-blue-theme {
-    @include picture-list-edit-mixin($pip-blue-theme);
-}
-
-.pip-grey-theme {
-    @include picture-list-edit-mixin($pip-grey-theme);
-}
-
-.pip-navy-theme {
-    @include picture-list-edit-mixin($pip-navy-theme);
-}
-
-.pip-amber-theme {
-    @include picture-list-edit-mixin($pip-amber-theme);
-}
-
-.pip-green-theme {
-    @include picture-list-edit-mixin($pip-green-theme);
-}
-
-.pip-orange-theme {
-    @include picture-list-edit-mixin($pip-orange-theme);
-}
-
-.pip-pink-theme {
-    @include picture-list-edit-mixin($pip-pink-theme);
-}
-
-.pip-dark-theme {
-    @include picture-list-edit-mixin($pip-dark-theme);
-}
-
-.pip-black-theme {
-    @include picture-list-edit-mixin($pip-black-theme);
-}
-
-.bootbarn-warm-theme {
-    @include picture-list-edit-mixin($bootbarn-warm-theme);
-}
-
-.bootbarn-cool-theme {
-    @include picture-list-edit-mixin($bootbarn-cool-theme);
-}
-
-.bootbarn-mono-theme {
-    @include picture-list-edit-mixin($bootbarn-mono-theme);
+@each $class, $theme in $themes {
+    .#{$class} {
+        @include picture-list-edit-mixin($theme);
+    }
 }
 
 :host {
