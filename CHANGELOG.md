@@ -97,3 +97,19 @@ No breaking changes in this version
 
 #### Bug Fixes
 No fixes in this version
+
+## <a name="1.1.3"></a> 1.1.3 (2019-01-08)
+
+`pip-picure` now have `letterIcon` property to display letter if there no image.
+
+### Features
+* **picture**: picture view and edit controls
+* **picture list**: picture list edit control
+* **collage**: collage control
+* **add image**: menu to add pictures from file, camera, weblink
+
+### Breaking Changes
+No breaking changes in this version
+
+#### Bug Fixes
+No fixes in this version

@@ -36,6 +36,12 @@ export class PipPictureComponent implements OnInit, OnDestroy, AfterViewInit {
         this.source = source;
     }
     @Input() defaultIcon: string = null;
+    @Input() set letterIcon(letter: string) {
+        const l = letter && letter.length ? letter.charAt(0) : null;
+        this.renderer.setElementProperty(this.elRef.nativeElement.querySelector('.pip-letter-icon'), 'innerText', l);
+        this.renderer.setElementStyle(this.elRef.nativeElement.querySelector('.pip-letter-icon'), 'display', l ? 'block' : 'none');
+        this.renderer.setElementStyle(this.elRef.nativeElement.querySelector('mat-icon'), 'display', l ? 'none' : 'initial');
+    }
     @Input() set backgroundColor(color: string) {
         this.renderer.setElementStyle(this.elRef.nativeElement, 'background-color', color);
     }
@@ -45,7 +51,14 @@ export class PipPictureComponent implements OnInit, OnDestroy, AfterViewInit {
     @Input() set foregroundColorOpacity(opacity: string) {
         this._opacity = opacity;
         this.renderer.setElementStyle(
-            this.elRef.nativeElement.querySelector('mat-icon'), 'opacity', opacity || this._defaultColorOpacity
+            this.elRef.nativeElement.querySelector('.pip-letter-icon'),
+            'opacity',
+            opacity || this._defaultColorOpacity
+        );
+        this.renderer.setElementStyle(
+            this.elRef.nativeElement.querySelector('mat-icon'),
+            'opacity',
+            opacity || this._defaultColorOpacity
         );
     }
     // tslint:disable-next-line:no-output-rename

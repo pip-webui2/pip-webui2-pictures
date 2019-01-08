@@ -1,5 +1,4 @@
 @import '~pip-webui2-themes/variables';
-
 @mixin picture-mixin($theme) {
     $foreground: map-get($theme, foreground);
     $background: map-get($theme, background);
@@ -15,6 +14,10 @@
     }
 }
 
+.pip-letter-icon {
+    display: none;
+}
+
 $xl: 120px;
 $l: 80px;
 $m: 64px;
@@ -27,46 +30,56 @@ $xs: 24px;
     &.square-xs {
         width: $xs;
         height: $xs;
-        mat-icon {
+        mat-icon,
+        .pip-letter-icon {
             font-size: $xs / 1.5;
             width: $xs / 1.5;
             height: $xs / 1.5;
+            text-align: center;
         }
     }
     &.square-s {
         width: $s;
         height: $s;
-        mat-icon {
+        mat-icon,
+        .pip-letter-icon {
             font-size: $s / 2;
             width: $s / 2;
             height: $s / 2;
+            text-align: center;
         }
     }
     &.square-m {
         width: $m;
         height: $m;
-        mat-icon {
+        mat-icon,
+        .pip-letter-icon {
             font-size: $m / 2;
             width: $m / 2;
             height: $m / 2;
+            text-align: center;
         }
     }
     &.square-l {
         width: $l;
         height: $l;
-        mat-icon {
+        mat-icon,
+        .pip-letter-icon {
             font-size: $l / 2;
             width: $l / 2;
             height: $l / 2;
+            text-align: center;
         }
     }
     &.square-xl {
         width: $xl;
         height: $xl;
-        mat-icon {
+        mat-icon,
+        .pip-letter-icon {
             font-size: $xl / 2;
             width: $xl / 2;
             height: $xl / 2;
+            text-align: center;
         }
     }
     &.rounded {
