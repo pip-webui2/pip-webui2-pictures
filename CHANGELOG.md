@@ -113,3 +113,19 @@ No breaking changes in this version
 
 #### Bug Fixes
 No fixes in this version
+
+## <a name="1.1.4"></a> 1.1.4 (2019-01-22)
+
+Update for new themes
+
+### Features
+* **picture**: picture view and edit controls
+* **picture list**: picture list edit control
+* **collage**: collage control
+* **add image**: menu to add pictures from file, camera, weblink
+
+### Breaking Changes
+No breaking changes in this version
+
+#### Bug Fixes
+No fixes in this version

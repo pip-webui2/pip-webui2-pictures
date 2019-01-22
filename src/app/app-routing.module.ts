@@ -12,7 +12,7 @@ const appRoutes: Routes = [
     { path: 'collage', component: CollageExampleComponent },
     { path: 'picture_edit', component: PictureEditExampleComponent },
     { path: 'picture_list_edit', component: PictureListEditExampleComponent },
-    { path: '', pathMatch: 'full', redirectTo: 'picture' }
+    { path: '**', redirectTo: 'picture' }
 ];
 
 @NgModule({

@@ -2,7 +2,13 @@
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/pip-webui2-pictures",
   "lib": {
-    "entryFile": "src/public_api.ts"
+    "entryFile": "src/public_api.ts",
+    "umdModuleIds": {
+      "@ngx-translate/core": "^11.0.1",
+      "ack-angular-webcam": "^1.9.3",
+      "pip-webui2-behaviors": "^1.1.9",
+      "pip-webui2-themes": "^1.1.10"
+    }
   },
   "whitelistedNonPeerDependencies": [
     "ack-angular-webcam",

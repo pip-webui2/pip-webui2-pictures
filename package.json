@@ -12,7 +12,8 @@
     "lint": "ng lint",
     "lint:lib": "ng lint pip-webui2-pictures",
     "e2e": "ng e2e",
-    "package": "npm run build:lib && copy .\\LICENSE .\\dist\\pip-webui2-pictures && copy .\\README.md .\\dist\\pip-webui2-pictures && cd dist/pip-webui2-pictures && npm pack"
+    "package": "npm run build:lib && (for %I in (LICENSE README.md CHANGELOG.md) do copy .\\%I .\\dist\\pip-webui2-pictures) && cd dist/pip-webui2-pictures && npm pack",
+    "deploy": "ng build --prod --base-href https://pip-webui2.github.io/pip-webui2-pictures/ && ngh --dir dist/pip-webui2-pictures-app"
   },
   "private": false,
   "dependencies": {
@@ -21,7 +22,7 @@
     "@angular/common": "^7.1.1",
     "@angular/compiler": "^7.1.1",
     "@angular/core": "^7.1.1",
-    "@angular/flex-layout": "^7.0.0-beta.19",
+    "@angular/flex-layout": "^7.0.0-beta.23",
     "@angular/forms": "^7.1.1",
     "@angular/http": "^7.1.1",
     "@angular/material": "^7.1.1",
@@ -31,8 +32,8 @@
     "@ngx-translate/core": "^11.0.1",
     "ack-angular-webcam": "^1.9.3",
     "core-js": "^2.5.4",
-    "pip-webui2-behaviors": "^1.1.4",
-    "pip-webui2-themes": "^1.1.6",
+    "pip-webui2-behaviors": "^1.1.9",
+    "pip-webui2-themes": "^1.1.10",
     "rxjs": "~6.3.3",
     "zone.js": "~0.8.26"
   },
@@ -45,6 +46,7 @@
     "@types/jasmine": "~3.3.1",
     "@types/jasminewd2": "~2.0.6",
     "@types/node": "~10.12.12",
+    "angular-cli-ghpages": "^0.5.3",
     "codelyzer": "~4.5.0",
     "jasmine-core": "~3.3.0",
     "jasmine-spec-reporter": "~4.2.1",
