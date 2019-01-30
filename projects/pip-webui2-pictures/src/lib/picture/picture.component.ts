@@ -8,10 +8,12 @@ import {
     EventEmitter,
     Renderer,
     ElementRef,
-    ChangeDetectorRef
+    ChangeDetectorRef,
+    ViewChild
 } from '@angular/core';
 
 import { setImageMarginCSS, setErrorImageCSS, setErrorIconCSS, debounce } from '../shared/picture-utils';
+import { MatIcon } from '@angular/material';
 
 @Component({
     selector: 'pip-picture',
@@ -20,9 +22,10 @@ import { setImageMarginCSS, setErrorImageCSS, setErrorIconCSS, debounce } from '
 })
 export class PipPictureComponent implements OnInit, OnDestroy, AfterViewInit {
     public source: string = null;
+    public letter: string;
     private _imageBlock: HTMLElement;
     private _defaultIconBlock: HTMLElement;
-    private _icon: HTMLElement;
+    // private _icon: HTMLElement;
     private _defaultColorOpacity = '0.56';
     private _opacity: string = null;
 
@@ -35,12 +38,12 @@ export class PipPictureComponent implements OnInit, OnDestroy, AfterViewInit {
     @Input() set src(source: string) {
         this.source = source;
     }
-    @Input() defaultIcon: string = null;
+    @Input() defaultIcon = 'image';
     @Input() set letterIcon(letter: string) {
-        const l = letter && letter.length ? letter.charAt(0) : null;
-        this.renderer.setElementProperty(this.elRef.nativeElement.querySelector('.pip-letter-icon'), 'innerText', l);
-        this.renderer.setElementStyle(this.elRef.nativeElement.querySelector('.pip-letter-icon'), 'display', l ? 'block' : 'none');
-        this.renderer.setElementStyle(this.elRef.nativeElement.querySelector('mat-icon'), 'display', l ? 'none' : 'initial');
+        this.letter = letter && letter.length ? letter.charAt(0) : null;
+        // this.renderer.setElementProperty(this.elRef.nativeElement.querySelector('.pip-letter-icon'), 'innerText', l);
+        // this.renderer.setElementStyle(this.elRef.nativeElement.querySelector('.pip-letter-icon'), 'display', l ? 'block' : 'none');
+        // this.renderer.setElementStyle(this.elRef.nativeElement.querySelector('mat-icon'), 'display', l ? 'none' : 'initial');
     }
     @Input() set backgroundColor(color: string) {
         this.renderer.setElementStyle(this.elRef.nativeElement, 'background-color', color);
@@ -48,33 +51,24 @@ export class PipPictureComponent implements OnInit, OnDestroy, AfterViewInit {
     @Input() set foregroundColor(color: string) {
         this.renderer.setElementStyle(this.elRef.nativeElement, 'color', color);
     }
-    @Input() set foregroundColorOpacity(opacity: string) {
-        this._opacity = opacity;
-        this.renderer.setElementStyle(
-            this.elRef.nativeElement.querySelector('.pip-letter-icon'),
-            'opacity',
-            opacity || this._defaultColorOpacity
-        );
-        this.renderer.setElementStyle(
-            this.elRef.nativeElement.querySelector('mat-icon'),
-            'opacity',
-            opacity || this._defaultColorOpacity
-        );
-    }
+    @Input() foregroundColorOpacity = '0.56';
     // tslint:disable-next-line:no-output-rename
     @Output('onImageLoad') imageLoadEvent: EventEmitter<any> = new EventEmitter<any>();
     // tslint:disable-next-line:no-output-rename
     @Output('onImageError') imageErrorEvent: EventEmitter<any> = new EventEmitter<any>();
 
+    @ViewChild('svgIcon') private svgIcon: MatIcon;
+    @ViewChild('fontIcon') private fontIcon: MatIcon;
+
     ngOnInit() {
         this._imageBlock = this.elRef.nativeElement.querySelector('img');
         this._defaultIconBlock = this.elRef.nativeElement.querySelector('div');
-        this._icon = this.elRef.nativeElement.querySelector('mat-icon');
-        if (this._opacity == null) {
-            this.renderer.setElementStyle(
-                this._icon, 'opacity', this._defaultColorOpacity
-            );
-        }
+        // this._icon = this.elRef.nativeElement.querySelector('mat-icon');
+        // if (this._opacity == null) {
+        //     this.renderer.setElementStyle(
+        //         this._icon, 'opacity', this._defaultColorOpacity
+        //     );
+        // }
     }
 
     constructor(
@@ -87,8 +81,8 @@ export class PipPictureComponent implements OnInit, OnDestroy, AfterViewInit {
         this.onResize = debounce(() => {
             if (this._loaded) {
                 setImageMarginCSS(this.elRef.nativeElement, this._image, {});
-            } else {
-                setErrorIconCSS(this.elRef.nativeElement, this._icon, {});
+            } else if (!this.letter) {
+                setErrorIconCSS(this.elRef.nativeElement, this.getCurrentIconElement(), {});
             }
         }, 20);
     }
@@ -103,7 +97,7 @@ export class PipPictureComponent implements OnInit, OnDestroy, AfterViewInit {
         this._image = $event.path ? $event.path[0] : null;
 
         setErrorImageCSS(this._image, {});
-        setErrorIconCSS(this.elRef.nativeElement, this._icon, {});
+        if (!this.letter) { setErrorIconCSS(this.elRef.nativeElement, this.getCurrentIconElement(), {}); }
         this._image.style.cssText += 'display: none';
         this._defaultIconBlock.style.cssText += 'display: flex';
         this._loaded = false;
@@ -122,6 +116,12 @@ export class PipPictureComponent implements OnInit, OnDestroy, AfterViewInit {
 
     ngOnDestroy() {
         window.removeEventListener('resize', this.onResize);
+    }
+
+    private getCurrentIconElement(): HTMLElement {
+        return this.defaultIcon.includes('-')
+            ? this.fontIcon._elementRef.nativeElement
+            : this.svgIcon._elementRef.nativeElement;
     }
 
 }

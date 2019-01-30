@@ -4,7 +4,7 @@ export const AppTranslations = {
         'ru': 'Русский',
         'EXAMPLES.EMPTY_STATES': 'Empty states',
         'EXAMPLES.WITH_SOURCE_FILES': 'With source files',
-        'EXAMPLES.WITH_LETTER_ICON': 'With source files',
+        'EXAMPLES.WITH_LETTER_ICON': 'With letter icon',
         'EXAMPLES.WITH_BAD_SOURCE': 'With bad source (fallback to icon or letter)',
         'EXAMPLES.ITEM': 'item',
         'EXAMPLES.ITEMS': 'items',

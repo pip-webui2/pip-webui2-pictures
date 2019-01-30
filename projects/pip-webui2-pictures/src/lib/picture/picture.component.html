@@ -1,5 +1,9 @@
 <img [src]="source" (load)="onImageLoad($event)" (error)="onImageError($event)">
 <div>
-    <mat-icon>{{ defaultIcon || 'image' }}</mat-icon>
-    <div class="pip-letter-icon"></div>
+    <mat-icon #svgIcon *ngIf="!letter && (!defaultIcon || !defaultIcon.includes('-'))" [ngStyle]="{'opacity': foregroundColorOpacity}">
+        {{ defaultIcon }}
+    </mat-icon>
+    <mat-icon #fontIcon *ngIf="!letter && (defaultIcon && defaultIcon.includes('-'))" [fontIcon]="defaultIcon"
+              [ngStyle]="{'opacity': foregroundColorOpacity}"></mat-icon>
+    <div class="pip-letter-icon" *ngIf="letter">{{ letter }}</div>
 </div>
