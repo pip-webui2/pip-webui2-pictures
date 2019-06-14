@@ -15,7 +15,6 @@ import { CameraDialogTranslations } from './shared/camera-dialog.translations';
 })
 export class PipCameraDialogComponent implements AfterViewInit {
 
-  public webcam: WebCamComponent;
   public photoDone = false;
 
   public options = {

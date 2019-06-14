@@ -1,6 +1,6 @@
 {
   "name": "pip-webui2-pictures",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@ngx-translate/core": "^11.0.1",
-    "ack-angular-webcam": "^1.9.3",
+    "ack-angular-webcam": "1.10.0",
     "pip-webui2-behaviors": "^1.1.9",
     "pip-webui2-themes": "^1.1.10"
   },

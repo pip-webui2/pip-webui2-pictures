@@ -1,6 +1,6 @@
 <h3>{{ 'PICTURES.GET_IMAGE_FROM_CAMERA' | translate }}</h3>
 <canvas [ngClass]="{ 'show': photoDone }"></canvas>
-<ack-webcam [ngClass]="{ 'show': !photoDone }" [(ref)]="webcam" [options]="options" (success)="onSuccess($event)"
+<ack-webcam [ngClass]="{ 'show': !photoDone }" #webcam [options]="options" (success)="onSuccess($event)"
             (catch)="onError($event)"></ack-webcam>
 <div class="actions" fxLayout="row">
     <button mat-icon-button>

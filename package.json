@@ -1,10 +1,10 @@
 {
   "name": "pip-webui2-pictures",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --configuration=production",
     "build": "ng build",
     "build:lib": "ng build pip-webui2-pictures",
     "test": "ng test",
@@ -30,7 +30,7 @@
     "@angular/platform-browser-dynamic": "^7.1.1",
     "@angular/router": "^7.1.1",
     "@ngx-translate/core": "^11.0.1",
-    "ack-angular-webcam": "^1.9.3",
+    "ack-angular-webcam": "^1.10.0",
     "core-js": "^2.5.4",
     "pip-webui2-behaviors": "^1.1.9",
     "pip-webui2-themes": "^1.1.10",
