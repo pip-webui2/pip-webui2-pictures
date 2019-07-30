@@ -14,6 +14,8 @@ export class PipPictureEditComponent implements OnInit, OnDestroy, AfterViewInit
     private _pasteElement: any = null;
 
     @Input() public defaultIcon: string = null;
+    @Input() public letterIcon: string = null;
+    @Input() public deleteIcon = 'clear';
     @Input() set src(source: string) {
         this.imageSource = source;
     }
@@ -55,6 +57,10 @@ export class PipPictureEditComponent implements OnInit, OnDestroy, AfterViewInit
         if (!results || !results.img) { return; }
         this.imageSource = results.img.url;
         this.imageLoadEvent.emit(results.img);
+    }
+
+    public onImageError() {
+        this.imageSource = null;
     }
 
     public onDeleteClick(event) {

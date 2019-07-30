@@ -161,3 +161,19 @@ No breaking changes in this version
 
 #### Bug Fixes
 * Camera plugin version was fixed
+
+## <a name="1.1.7"></a> 1.1.7 (2019-07-30)
+
+PictureEdit options for letter icon and delete icon
+
+### Features
+* **picture**: picture view and edit controls
+* **picture list**: picture list edit control
+* **collage**: collage control
+* **add image**: menu to add pictures from file, camera, weblink
+
+### Breaking Changes
+No breaking changes in this version
+
+#### Bug Fixes
+No fixes in this version

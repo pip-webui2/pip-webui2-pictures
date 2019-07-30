@@ -1,6 +1,8 @@
 <pip-add-image (onImageLoad)="onImageLoad($event)">
-    <pip-picture [src]="imageSource" [defaultIcon]="defaultIcon"></pip-picture>
+    <pip-picture [src]="imageSource" [defaultIcon]="defaultIcon" [letterIcon]="letterIcon"
+        (onImageError)="onImageError()"></pip-picture>
     <button mat-icon-button *ngIf="imageSource" class="delete-button" (click)="onDeleteClick($event)">
-        <mat-icon>clear</mat-icon>
+        <mat-icon *ngIf="deleteIcon && !deleteIcon.includes('-')">{{ deleteIcon }}</mat-icon>
+        <mat-icon *ngIf="deleteIcon && deleteIcon.includes('-')" [fontIcon]="deleteIcon"></mat-icon>
     </button>
 </pip-add-image>
