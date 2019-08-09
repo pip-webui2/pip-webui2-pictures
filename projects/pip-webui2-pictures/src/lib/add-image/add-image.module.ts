@@ -29,6 +29,6 @@ import { PipPictureUrlDialogModule } from '../picture-url-dialog/picture-url-dia
     PipAddImageComponent
   ],
   providers: [],
-  entryComponents: [PipCameraDialogComponent, PipPictureUrlDialogComponent]
+  entryComponents: [PipPictureUrlDialogComponent]
 })
 export class PipAddImageModule { }

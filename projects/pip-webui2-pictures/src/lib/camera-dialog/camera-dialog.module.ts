@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule, MatIconModule, MatDialogModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
-import { WebCamModule } from 'ack-angular-webcam';
+import { WebcamModule } from 'ngx-webcam';
 
 import { PipCameraDialogComponent } from './camera-dialog.component';
 
 @NgModule({
-  declarations: [
-    PipCameraDialogComponent
-  ],
+  declarations: [PipCameraDialogComponent],
+  exports: [PipCameraDialogComponent],
+  entryComponents: [PipCameraDialogComponent],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -17,10 +17,7 @@ import { PipCameraDialogComponent } from './camera-dialog.component';
     MatDialogModule,
     TranslateModule,
 
-    WebCamModule
-  ],
-  exports: [
-    PipCameraDialogComponent
+    WebcamModule
   ],
   providers: []
 })

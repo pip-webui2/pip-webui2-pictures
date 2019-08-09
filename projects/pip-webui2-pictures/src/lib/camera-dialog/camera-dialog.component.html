@@ -1,17 +1,19 @@
 <h3>{{ 'PICTURES.GET_IMAGE_FROM_CAMERA' | translate }}</h3>
-<canvas [ngClass]="{ 'show': photoDone }"></canvas>
-<ack-webcam [ngClass]="{ 'show': !photoDone }" #webcam [options]="options" (success)="onSuccess($event)"
-            (catch)="onError($event)"></ack-webcam>
+<webcam *ngIf="!cameraError && showWebcam" [height]="375" [width]="500" [trigger]="triggerObservable"
+    (imageCapture)="onSuccess($event)" (initError)="onError($event)">
+</webcam>
+<img *ngIf="!cameraError && !showWebcam && webcamImage" [src]="webcamImage?.imageAsDataUrl"/>
+<div *ngIf="cameraError" class="pip-camera-error">{{ 'CAMERA_ERROR' | translate }}</div>
 <div class="actions" fxLayout="row">
     <button mat-icon-button>
         <mat-icon (click)="onClose()">clear</mat-icon>
     </button>
     <div fxFlex="grow"></div>
-    <button mat-icon-button (click)="onCapture()">
-        <mat-icon>{{ photoDone ? 'autorenew' : 'photo_camera' }}</mat-icon>
+    <button mat-icon-button (click)="takeSnapshot()" [disabled]="cameraError">
+        <mat-icon>{{ !showWebcam ? 'autorenew' : 'photo_camera' }}</mat-icon>
     </button>
     <div fxFlex="grow"></div>
-    <button mat-icon-button [disabled]="!photoDone" (click)="onSave()">
+    <button mat-icon-button [disabled]="showWebcam || !webcamImage" (click)="onSave()">
         <mat-icon>done</mat-icon>
     </button>
 </div>

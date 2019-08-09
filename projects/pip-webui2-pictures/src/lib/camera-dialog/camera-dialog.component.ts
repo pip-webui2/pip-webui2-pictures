@@ -1,21 +1,23 @@
-import { Component, Inject, Renderer, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, Inject, Renderer, ElementRef, OnInit, AfterViewInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
-import { WebCamComponent } from 'ack-angular-webcam';
+import { Subject, Observable } from 'rxjs';
+import { WebcamUtil, WebcamImage } from 'ngx-webcam';
 
 import { CameraDialogTranslations } from './shared/camera-dialog.translations';
-/**
- * @title Dialog Overview
- */
 
 @Component({
   selector: 'pip-camera-dilaog',
   templateUrl: 'camera-dialog.component.html',
   styleUrls: ['./camera-dialog.component.scss']
 })
-export class PipCameraDialogComponent implements AfterViewInit {
+export class PipCameraDialogComponent implements OnInit, AfterViewInit {
 
-  public photoDone = false;
+  private trigger: Subject<void> = new Subject<void>();
+
+  public cameraError = false;
+  public showWebcam = true;
+  public webcamImage: WebcamImage = null;
 
   public options = {
     audio: false,
@@ -36,57 +38,38 @@ export class PipCameraDialogComponent implements AfterViewInit {
     this.translate.setTranslation('ru', CameraDialogTranslations.ru, true);
   }
 
+  ngOnInit() { WebcamUtil.getAvailableVideoInputs(); }
+
   ngAfterViewInit() {
     this.renderer.setElementStyle(this.elRef.nativeElement.parentElement, 'padding', '24px 0');
   }
 
-  public onSuccess(stream: MediaStream) { }
-  public onError(err) { }
+  public onSuccess(webcamImage: WebcamImage) {
+    this.webcamImage = webcamImage;
+  }
+  public onError(err) { this.cameraError = true; }
 
-  public onCapture() {
-    const canvas = this.elRef.nativeElement.getElementsByTagName('canvas')[0];
-
-    if (this.photoDone) {
-      this.photoDone = false;
-      canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+  public takeSnapshot() {
+    if (this.showWebcam) {
+      this.trigger.next();
+      this.showWebcam = false;
     } else {
-      const video = this.elRef.nativeElement.getElementsByTagName('video')[0];
-      if (video && canvas) {
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-        canvas.getContext('2d').drawImage(video, 0, 0);
-        this.photoDone = true;
-      }
+      this.webcamImage = null;
+      this.showWebcam = true;
     }
   }
 
   public onSave() {
-    const canvas = this.elRef.nativeElement.getElementsByTagName('canvas')[0];
-
-    if (canvas) {
-      const ctx = canvas.getContext('2d');
-      const size = { width: canvas.width, height: canvas.height };
-      const w = size.width;
-      const h = size.height;
-      const imgData = ctx.getImageData(0, 0, w, h);
-      const externData = {
-        imgData: imgData,
-        url: canvas.toDataURL(imgData),
-        base64: canvas.toDataURL(imgData),
-        pos: 0
-      };
-
-      canvas.width = w;
-      canvas.height = h;
-      ctx.clearRect(0, 0, w, h);
-      this.data.img = externData;
-      this.dialogRef.close(this.data);
-    }
+    this.dialogRef.close(this.webcamImage);
   }
 
   public onClose() {
     this.data.img = null;
     this.dialogRef.close();
+  }
+
+  public get triggerObservable(): Observable<void> {
+    return this.trigger.asObservable();
   }
 
 }

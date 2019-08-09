@@ -67,7 +67,8 @@ export class PipAddImageComponent implements OnInit, AfterViewInit {
             if (this.onImageLoad) { this.onImageLoad.emit({
                 img: {
                     url: result.target.result,
-                    name: file.name
+                    name: file.name,
+                    file
                 }
             });
             }
