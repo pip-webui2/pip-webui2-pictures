@@ -60,7 +60,14 @@ export class PipCameraDialogComponent implements OnInit, AfterViewInit {
   }
 
   public onSave() {
-    this.dialogRef.close(this.webcamImage);
+    this.dialogRef.close({
+      img: {
+        base64: this.webcamImage.imageAsBase64,
+        imgData: this.webcamImage.imageData,
+        url: this.webcamImage.imageAsDataUrl,
+        pos: 0
+      }
+    });
   }
 
   public onClose() {

@@ -1,5 +1,5 @@
 <h3>{{ 'PICTURES.GET_IMAGE_FROM_CAMERA' | translate }}</h3>
-<webcam *ngIf="!cameraError && showWebcam" [height]="375" [width]="500" [trigger]="triggerObservable"
+<webcam *ngIf="!cameraError && showWebcam" [captureImageData]="true" [height]="375" [width]="500" [trigger]="triggerObservable"
     (imageCapture)="onSuccess($event)" (initError)="onError($event)">
 </webcam>
 <img *ngIf="!cameraError && !showWebcam && webcamImage" [src]="webcamImage?.imageAsDataUrl"/>
