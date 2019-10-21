@@ -177,3 +177,19 @@ No breaking changes in this version
 
 #### Bug Fixes
 No fixes in this version
+
+## <a name="1.1.9"></a> 1.1.9 (2019-10-21)
+
+Fixes
+
+### Features
+* **picture**: picture view and edit controls
+* **picture list**: picture list edit control
+* **collage**: collage control
+* **add image**: menu to add pictures from file, camera, weblink
+
+### Breaking Changes
+No breaking changes in this version
+
+#### Bug Fixes
+* Check image exists before set style

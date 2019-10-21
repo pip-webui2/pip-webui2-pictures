@@ -6,7 +6,7 @@ import {
     OnDestroy,
     AfterViewInit,
     EventEmitter,
-    Renderer,
+    Renderer2,
     ElementRef,
     ChangeDetectorRef,
     ViewChild
@@ -46,10 +46,10 @@ export class PipPictureComponent implements OnInit, OnDestroy, AfterViewInit {
         // this.renderer.setElementStyle(this.elRef.nativeElement.querySelector('mat-icon'), 'display', l ? 'none' : 'initial');
     }
     @Input() set backgroundColor(color: string) {
-        this.renderer.setElementStyle(this.elRef.nativeElement, 'background-color', color);
+        this.renderer.setStyle(this.elRef.nativeElement, 'background-color', color);
     }
     @Input() set foregroundColor(color: string) {
-        this.renderer.setElementStyle(this.elRef.nativeElement, 'color', color);
+        this.renderer.setStyle(this.elRef.nativeElement, 'color', color);
     }
     @Input() foregroundColorOpacity = '0.56';
     // tslint:disable-next-line:no-output-rename
@@ -72,11 +72,10 @@ export class PipPictureComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     constructor(
-        private renderer: Renderer,
+        private renderer: Renderer2,
         private elRef: ElementRef,
         private cd: ChangeDetectorRef
     ) {
-        renderer.setElementClass(elRef.nativeElement, 'pip-picture', true);
 
         this.onResize = debounce(() => {
             if (this._loaded) {
@@ -88,28 +87,29 @@ export class PipPictureComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     ngAfterViewInit() {
+        this.renderer.addClass(this.elRef.nativeElement, 'pip-picture');
         if (this.resize) {
             window.addEventListener('resize', this.onResize);
         }
     }
 
     public onImageError($event) {
-        this._image = $event.path ? $event.path[0] : null;
+        this._image = $event.path ? $event.path[0] : $event.target || null;
 
         setErrorImageCSS(this._image, {});
         if (!this.letter) { setErrorIconCSS(this.elRef.nativeElement, this.getCurrentIconElement(), {}); }
-        this._image.style.cssText += 'display: none';
-        this._defaultIconBlock.style.cssText += 'display: flex';
+        if (this._image) { this.renderer.setStyle(this._image, 'display', 'none'); }
+        this.renderer.setStyle(this._defaultIconBlock, 'display', 'flex');
         this._loaded = false;
         if (this.imageErrorEvent) { this.imageErrorEvent.emit({ event: $event, image: this._image }); }
     }
 
     public onImageLoad($event) {
-        this._image = $event.path ? $event.path[0] : null;
+        this._image = $event.path ? $event.path[0] : $event.target || null;
 
         setImageMarginCSS(this.elRef.nativeElement, this._image, {});
-        this._image.style.cssText += 'display: flex';
-        this._defaultIconBlock.style.cssText += 'display: none';
+        if (this._image) { this.renderer.setStyle(this._image, 'display', 'flex'); }
+        this.renderer.setStyle(this._defaultIconBlock, 'display', 'none');
         this._loaded = true;
         if (this.imageLoadEvent) { this.imageLoadEvent.emit({ event: $event, image: this._image }); }
     }
