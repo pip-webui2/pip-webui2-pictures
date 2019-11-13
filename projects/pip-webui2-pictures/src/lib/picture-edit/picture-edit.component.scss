@@ -3,8 +3,10 @@
 @mixin picture-mixin($theme) {
     $foreground: map-get($theme, foreground);
     $background: map-get($theme, background);
+
     :host {
         border: dashed 2px mat-color($foreground, divider);
+
         .pip-add-image .delete-button {
             color: mat-color($foreground, text);
             background: mat-color($background, card);
@@ -13,24 +15,93 @@
     }
 }
 
-@each $class, $theme in $themes {
+@each $class,
+$theme in $themes {
     .#{$class} {
         @include picture-mixin($theme);
     }
 }
 
+$xl: 120px;
+$l: 80px;
+$m: 64px;
+$s: 40px;
+$xs: 24px;
+
 :host {
-    width: 80px;
-    height: 80px;
+    width: $l;
+    height: $l;
     display: block;
     box-sizing: content-box;
+
     .pip-picture {
         width: 100%;
         height: 100%;
     }
+
+    &.square-xs .pip-picture /deep/ {
+        width: $xs;
+        height: $xs;
+
+        mat-icon,
+        .pip-letter-icon {
+            font-size: $xs / 1.5;
+            text-align: center;
+        }
+    }
+
+    &.square-s .pip-picture /deep/ {
+        width: $s;
+        height: $s;
+
+        mat-icon,
+        .pip-letter-icon {
+            font-size: $s / 2;
+            text-align: center;
+        }
+    }
+
+    &.square-m .pip-picture /deep/ {
+        width: $m;
+        height: $m;
+
+        mat-icon,
+        .pip-letter-icon {
+            font-size: $m / 2;
+            text-align: center;
+        }
+    }
+
+    &.square-l .pip-picture /deep/ {
+        width: $l;
+        height: $l;
+
+        mat-icon,
+        .pip-letter-icon {
+            font-size: $l / 2;
+            text-align: center;
+        }
+    }
+
+    &.square-xl .pip-picture /deep/ {
+        width: $xl;
+        height: $xl;
+
+        mat-icon,
+        .pip-letter-icon {
+            font-size: $xl / 2;
+            text-align: center;
+        }
+    }
+
+    &.rounded .pip-picture /deep/ {
+        border-radius: 50%;
+    }
+
     .pip-add-image {
         position: relative;
         display: block;
+
         .delete-button {
             position: absolute;
             top: 4px;
