@@ -193,3 +193,19 @@ No breaking changes in this version
 
 #### Bug Fixes
 * Check image exists before set style
+
+## <a name="1.1.11"></a> 1.1.11 (2019-12-10)
+
+`accent` and `primary` colors switched in `mst-elegant-theme`
+
+### Features
+* **picture**: picture view and edit controls
+* **picture list**: picture list edit control
+* **collage**: collage control
+* **add image**: menu to add pictures from file, camera, weblink
+
+### Breaking Changes
+No breaking changes in this version
+
+#### Bug Fixes
+No fixes in this version
