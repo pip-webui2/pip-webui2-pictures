@@ -39,7 +39,7 @@ $xs: 24px;
         height: 100%;
     }
 
-    &.square-xs .pip-picture /deep/ {
+    &.square-xs .pip-picture ::ng-deep {
         width: $xs;
         height: $xs;
 
@@ -50,7 +50,7 @@ $xs: 24px;
         }
     }
 
-    &.square-s .pip-picture /deep/ {
+    &.square-s .pip-picture ::ng-deep {
         width: $s;
         height: $s;
 
@@ -61,7 +61,7 @@ $xs: 24px;
         }
     }
 
-    &.square-m .pip-picture /deep/ {
+    &.square-m .pip-picture ::ng-deep {
         width: $m;
         height: $m;
 
@@ -72,7 +72,7 @@ $xs: 24px;
         }
     }
 
-    &.square-l .pip-picture /deep/ {
+    &.square-l .pip-picture ::ng-deep {
         width: $l;
         height: $l;
 
@@ -83,7 +83,7 @@ $xs: 24px;
         }
     }
 
-    &.square-xl .pip-picture /deep/ {
+    &.square-xl .pip-picture ::ng-deep {
         width: $xl;
         height: $xl;
 
@@ -94,7 +94,7 @@ $xs: 24px;
         }
     }
 
-    &.rounded .pip-picture /deep/ {
+    &.rounded .pip-picture ::ng-deep {
         border-radius: 50%;
     }
 
