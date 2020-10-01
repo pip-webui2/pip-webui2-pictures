@@ -1,0 +1,52 @@
+/* Import or define your theme-based mixins */
+@import '~pip-webui2-behaviors/styles';
+@import '../dist/pip-webui2-pictures/styles.scss';
+
+@mixin application-mixin($theme) {
+    $background: map-get($theme, 'background');
+    $primary: map-get($theme, primary);
+
+    .primary-text {
+        color: mat-color($primary);
+    }
+
+    .primary-background {
+        background-color: mat-color($primary);
+        color: mat-color($primary, 'default-contrast');
+    }
+
+    /* width */
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: transparent;
+        border-radius: 3px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: darken(map-get($background, 'raised-button'), 20%);
+        border-radius: 3px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: darken(map-get($background, 'raised-button'), 40%);
+    }
+
+    body {
+        scrollbar-color: darken(map-get($background, 'raised-button'), 20%) transparent;
+    }
+
+    * {
+        scrollbar-width: thin;
+    }
+}
+
+/* And call them! */
+@include application-mixin($theme);
+@include pip-webui2-behaviors-mixin($theme);
+@include pip-webui2-pictures-mixin($theme);

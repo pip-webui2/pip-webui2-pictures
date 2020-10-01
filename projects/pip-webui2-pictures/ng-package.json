@@ -4,10 +4,10 @@
   "lib": {
     "entryFile": "src/public_api.ts",
     "umdModuleIds": {
-      "@ngx-translate/core": "^11.0.1",
-      "ack-angular-webcam": "^1.9.3",
-      "pip-webui2-behaviors": "^1.1.23",
-      "pip-webui2-themes": "^1.1.24"
+      "@ngx-translate/core": "ngxTranslateCore",
+      "ngx-webcam": "bgxWebcam",
+      "pip-webui2-behaviors": "pipWebui2Behaviors",
+      "pip-webui2-themes": "pipWebui2Themes"
     }
   },
   "whitelistedNonPeerDependencies": [

@@ -1,12 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
-import { MediaObserver, MediaChange } from '@angular/flex-layout';
-import { MatSidenav } from '@angular/material';
+import { MediaObserver } from '@angular/flex-layout';
+import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { PipThemesService, Theme } from 'pip-webui2-themes';
-
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { AppTranslations } from './app.strings';
 import { ExmapleListItem } from './examples-list/shared/ExampleListItem';
+import { combineLatestMap } from './utils';
 
 @Component({
   selector: 'app-root',
@@ -14,37 +16,17 @@ import { ExmapleListItem } from './examples-list/shared/ExampleListItem';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public themes: Theme[];
-  public selectedTheme: Theme;
   public activeMediaQuery: boolean;
-  public mode: string;
   public app = 'Pictures';
   public url: string;
-  public langs: string[] = [];
-  public selectedLang = 'en';
 
-  public themesLocalNames: any = {
-    'candy-theme': 'Candy',
-    'unicorn-dark-theme': 'Unicorn Dark',
-    'pip-blue-theme': 'Blue',
-    'pip-grey-theme': 'Grey',
-    'pip-pink-theme': 'Pink',
-    'pip-green-theme': 'Green',
-    'pip-navy-theme': 'Navy',
-    'pip-amber-theme': 'Amber',
-    'pip-orange-theme': 'Orange',
-    'pip-dark-theme': 'Dark',
-    'pip-black-theme': 'Black',
-    'bootbarn-warm-theme': 'Bootbarn Warm',
-    'bootbarn-cool-theme': 'Bootbarn Cool',
-    'bootbarn-mono-theme': 'Bootbarn Mono',
-    'mst-black-theme': 'MST Black',
-    'mst-black-dark-theme': 'MST Black Dark',
-    'mst-mono-theme': 'MST Mono',
-    'mst-orange-theme': 'MST Orange',
-    'mst-orange-dark-theme': 'MST Orange Dark',
-    'mst-elegant-theme': 'MST Elegant'
-  };
+  public ctx$: Observable<{
+    activeMediaQuery: boolean
+  }>;
+  public themes: Theme[];
+  public theme: Theme;
+  public languages = ['en', 'ru'];
+  public language: string;
 
   public list: ExmapleListItem[] = [
     {
@@ -69,18 +51,20 @@ export class AppComponent {
     public media: MediaObserver,
     private translate: TranslateService
   ) {
-    this.selectedTheme = this.themeService.selectedTheme;
-    this.themes = this.themeService.themes;
 
-    translate.setDefaultLang(this.selectedLang);
-    translate.use(this.selectedLang);
-    this.langs = translate.getLangs();
-    this.translate.setTranslation('en', AppTranslations.en, true);
-    this.translate.setTranslation('ru', AppTranslations.ru, true);
+    this.themes = this.themeService.themesArray;
+    this.theme = this.themeService.currentTheme;
 
-    this.media.media$.subscribe((change: MediaChange) => {
-      this.activeMediaQuery = change && change.mqAlias === 'xs' ? true : false;
-      this.mode = change && change.mqAlias === 'xs' ? null : 'side';
+    this.translate.addLangs(this.languages);
+    Object.entries(AppTranslations).forEach(e => this.translate.setTranslation(e[0], e[1], true));
+    this.translate.setDefaultLang('en');
+
+    const browserLang = translate.getBrowserLang();
+    this.translate.use(browserLang.match(/en|ru/) ? browserLang : 'en');
+    this.language = this.translate.currentLang;
+
+    this.ctx$ = combineLatestMap({
+      activeMediaQuery: media.asObservable().pipe((map(changes => changes && changes.some(c => c.mqAlias === 'xs'))))
     });
 
     router.events.subscribe((url: any) => {
@@ -103,13 +87,13 @@ export class AppComponent {
     this.sidenav.close();
   }
 
-  public changeTheme(theme) {
-    this.selectedTheme = theme;
-    this.themeService.selectedTheme = theme;
+  public changeTheme(theme: Theme) {
+    this.theme = theme;
+    this.themeService.selectTheme(theme.name);
   }
 
-  public changeLanguage(lang) {
-    this.selectedLang = lang;
-    this.translate.use(lang);
+  public changeLanguage(language: string) {
+    this.language = language;
+    this.translate.use(language);
   }
 }

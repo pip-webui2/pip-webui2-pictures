@@ -1,5 +1,5 @@
-import { Component, Inject, Renderer, ElementRef, AfterViewInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Component, Inject, ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 
 import { PictureUrlDialogTranslations } from './shared/picture-url-dialog.translations';
@@ -21,7 +21,7 @@ export class PipPictureUrlDialogComponent implements AfterViewInit {
     constructor(
         public dialogRef: MatDialogRef<PipPictureUrlDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any,
-        private renderer: Renderer,
+        private renderer: Renderer2,
         private elRef: ElementRef,
         private translate: TranslateService
     ) {
@@ -40,7 +40,7 @@ export class PipPictureUrlDialogComponent implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-        this.renderer.setElementStyle(this.elRef.nativeElement.parentElement, 'padding', '24px 0');
+        this.renderer.setStyle(this.elRef.nativeElement.parentElement, 'padding', '24px 0');
     }
 
     public onSave() {

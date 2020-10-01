@@ -1,4 +1,4 @@
-import { Component, Input, Output, OnInit, OnDestroy, AfterViewInit, ViewChild, EventEmitter, Renderer, ElementRef } from '@angular/core';
+import { Component, Input, Output, OnInit, OnDestroy, AfterViewInit, ViewChild, EventEmitter, ElementRef, Renderer2 } from '@angular/core';
 
 import { addPasteListener, removePasteListener } from '../shared/picture-utils';
 import { PipAddImageComponent } from '../add-image/add-image.component';
@@ -25,13 +25,13 @@ export class PipPictureEditComponent implements OnInit, OnDestroy, AfterViewInit
     // tslint:disable-next-line:no-output-rename
     @Output('onImageDelete') imageDeleteEvent: EventEmitter<any> = new EventEmitter<any>();
 
-    @ViewChild(PipAddImageComponent) addImage: PipAddImageComponent;
+    @ViewChild(PipAddImageComponent, { static: true }) addImage: PipAddImageComponent;
 
     constructor(
-        private renderer: Renderer,
+        private renderer: Renderer2,
         private elRef: ElementRef
     ) {
-        renderer.setElementClass(elRef.nativeElement, 'pip-picture-edit', true);
+        renderer.addClass(elRef.nativeElement, 'pip-picture-edit');
     }
 
     ngOnInit() { }
@@ -43,10 +43,10 @@ export class PipPictureEditComponent implements OnInit, OnDestroy, AfterViewInit
         });
 
         this.renderer.listen(this.elRef.nativeElement, 'keypress', (event) => {
-            if (event.keyCode === 32 || event.keyCode === 13) {
-                this.addImage.menu.openMenu();
-            }
-        });
+    if (event.keyCode === 32 || event.keyCode === 13) {
+        this.addImage.menu.openMenu();
+    }
+});
     }
 
     ngOnDestroy() {

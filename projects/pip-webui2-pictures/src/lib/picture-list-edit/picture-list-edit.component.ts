@@ -4,17 +4,7 @@ import {
     style,
     animate,
 } from '@angular/animations';
-import {
-    Component,
-    Input,
-    Output,
-    OnInit,
-    AfterViewInit,
-    EventEmitter,
-    Renderer,
-    ElementRef,
-    ViewChild
-} from '@angular/core';
+import { Component, Input, Output, OnInit, AfterViewInit, EventEmitter, ElementRef, ViewChild, Renderer2 } from '@angular/core';
 
 import { PipPictureEditComponent } from '../picture-edit/picture-edit.component';
 
@@ -45,15 +35,15 @@ export class PipPictureListEditComponent implements OnInit, AfterViewInit {
     @Input() height: number | string = '80px';
     @Input() defaultIcon: string = null;
     @Input() defaultAddIcon = 'add';
-    @ViewChild(PipPictureEditComponent) private _editComponent: PipPictureEditComponent;
+    @ViewChild(PipPictureEditComponent, { static: true }) private _editComponent: PipPictureEditComponent;
     // tslint:disable-next-line:no-output-on-prefix
     @Output() onUpdateImages: EventEmitter<any> = new EventEmitter<any>();
 
     constructor(
-        private renderer: Renderer,
+        private renderer: Renderer2,
         private elRef: ElementRef
     ) {
-        renderer.setElementClass(elRef.nativeElement, 'pip-picture-list-edit', true);
+        renderer.addClass(elRef.nativeElement, 'pip-picture-list-edit');
     }
 
     ngOnInit() { }

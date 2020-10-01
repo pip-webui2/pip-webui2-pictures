@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, AfterViewInit, Renderer, ElementRef } from '@angular/core';
+import { Component, Input, OnInit, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
 
 import { collageSchemes } from '../shared/picture-utils';
 
@@ -25,10 +25,10 @@ export class PipCollageComponent implements OnInit, AfterViewInit {
     }
 
     constructor(
-        private renderer: Renderer,
+        private renderer: Renderer2,
         private elRef: ElementRef
     ) {
-        renderer.setElementClass(elRef.nativeElement, 'pip-collage', true);
+        renderer.addClass(elRef.nativeElement, 'pip-collage');
     }
 
     ngAfterViewInit() {

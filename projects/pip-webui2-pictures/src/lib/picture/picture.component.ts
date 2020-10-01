@@ -13,7 +13,7 @@ import {
 } from '@angular/core';
 
 import { setImageMarginCSS, setErrorImageCSS, setErrorIconCSS, debounce } from '../shared/picture-utils';
-import { MatIcon } from '@angular/material';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
     selector: 'pip-picture',

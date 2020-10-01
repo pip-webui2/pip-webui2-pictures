@@ -1,0 +1,9 @@
+@import 'picture-edit/picture-edit.component.mixin.scss';
+@import 'picture-list-edit/picture-list-edit.component.mixin.scss';
+@import 'picture/picture.component.mixin.scss';
+
+@mixin pip-webui2-pictures-mixin($theme) {
+    @include pip-picture-edit-mixin($theme);
+    @include pip-picture-list-edit-mixin($theme);
+    @include pip-picture-mixin($theme);
+}

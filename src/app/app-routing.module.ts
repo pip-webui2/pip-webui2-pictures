@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-// import { UploadFilesExampleComponent } from './upload-files-example/upload-files-example.component';
 import { CollageExampleComponent } from './collage-example/collage-example.component';
 import { PictureEditExampleComponent } from './picture-edit-example/picture-edit-example.component';
 import { PictureExampleComponent } from './picture-example/picture-example.component';
@@ -17,7 +15,7 @@ const appRoutes: Routes = [
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(appRoutes)
+        RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' })
     ],
     exports: [RouterModule]
 })

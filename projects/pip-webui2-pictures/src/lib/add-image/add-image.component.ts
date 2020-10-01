@@ -1,5 +1,6 @@
-import { Component, Output, OnInit, AfterViewInit, EventEmitter, Renderer, ElementRef, ViewChild } from '@angular/core';
-import { MatDialog, MatMenuTrigger } from '@angular/material';
+import { Component, Output, OnInit, AfterViewInit, EventEmitter, ElementRef, ViewChild, Renderer2 } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatMenuTrigger } from '@angular/material/menu';
 import { TranslateService } from '@ngx-translate/core';
 
 import { PipCameraDialogComponent } from '../camera-dialog/camera-dialog.component';
@@ -13,19 +14,19 @@ import { AddImageTranslations } from './shared/add-image.translations';
     styleUrls: ['./add-image.component.scss']
 })
 export class PipAddImageComponent implements OnInit, AfterViewInit {
-    @ViewChild(MatMenuTrigger) public menu: MatMenuTrigger;
-    @ViewChild('fileInput') fileInput: any;
+    @ViewChild(MatMenuTrigger, { static: true }) public menu: MatMenuTrigger;
+    @ViewChild('fileInput', { static: true }) fileInput: any;
 
     // tslint:disable-next-line:no-output-on-prefix
     @Output() onImageLoad: EventEmitter<any> = new EventEmitter<any>();
 
     constructor(
-        private renderer: Renderer,
+        private renderer: Renderer2,
         private elRef: ElementRef,
         private dialog: MatDialog,
         private translate: TranslateService
     ) {
-        renderer.setElementClass(elRef.nativeElement, 'pip-add-image', true);
+        renderer.addClass(elRef.nativeElement, 'pip-add-image');
 
         this.translate.setTranslation('en', AddImageTranslations.en, true);
         this.translate.setTranslation('ru', AddImageTranslations.ru, true);

@@ -1,5 +1,5 @@
-import { Component, Inject, Renderer, ElementRef, OnInit, AfterViewInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Component, Inject, ElementRef, OnInit, AfterViewInit, Renderer2 } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject, Observable } from 'rxjs';
 import { WebcamUtil, WebcamImage } from 'ngx-webcam';
@@ -30,7 +30,7 @@ export class PipCameraDialogComponent implements OnInit, AfterViewInit {
   constructor(
     public dialogRef: MatDialogRef<PipCameraDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private renderer: Renderer,
+    private renderer: Renderer2,
     private elRef: ElementRef,
     private translate: TranslateService
   ) {
@@ -41,7 +41,7 @@ export class PipCameraDialogComponent implements OnInit, AfterViewInit {
   ngOnInit() { WebcamUtil.getAvailableVideoInputs(); }
 
   ngAfterViewInit() {
-    this.renderer.setElementStyle(this.elRef.nativeElement.parentElement, 'padding', '24px 0');
+    this.renderer.setStyle(this.elRef.nativeElement.parentElement, 'padding', '24px 0');
   }
 
   public onSuccess(webcamImage: WebcamImage) {

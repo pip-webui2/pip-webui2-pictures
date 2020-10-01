@@ -1,0 +1,55 @@
+{
+    "$schema": "../node_modules/pip-webui2-themes/themes.schema.json",
+    "themes": [
+        {
+            "name": "pip-amber",
+            "path": "../node_modules/pip-webui2-themes/assets/themes/pip-amber"
+        },
+        {
+            "name": "pip-black",
+            "path": "../node_modules/pip-webui2-themes/assets/themes/pip-black"
+        },
+        {
+            "name": "pip-blue",
+            "path": "../node_modules/pip-webui2-themes/assets/themes/pip-blue"
+        },
+        {
+            "name": "pip-candy",
+            "path": "../node_modules/pip-webui2-themes/assets/themes/pip-candy"
+        },
+        {
+            "name": "pip-dark",
+            "path": "../node_modules/pip-webui2-themes/assets/themes/pip-dark"
+        },
+        {
+            "name": "pip-green",
+            "path": "../node_modules/pip-webui2-themes/assets/themes/pip-green"
+        },
+        {
+            "name": "pip-grey",
+            "path": "../node_modules/pip-webui2-themes/assets/themes/pip-grey"
+        },
+        {
+            "name": "pip-navy",
+            "path": "../node_modules/pip-webui2-themes/assets/themes/pip-navy"
+        },
+        {
+            "name": "pip-orange",
+            "path": "../node_modules/pip-webui2-themes/assets/themes/pip-orange"
+        },
+        {
+            "name": "pip-pink",
+            "path": "../node_modules/pip-webui2-themes/assets/themes/pip-pink"
+        },
+        {
+            "name": "pip-unicorn-dark",
+            "path": "../node_modules/pip-webui2-themes/assets/themes/pip-unicorn-dark"
+        }
+    ],
+    "output": {
+        "directories": [
+            "./assets/themes",
+            "../dist/pip-webui2-pictures-app/assets/themes"
+        ]
+    }
+}

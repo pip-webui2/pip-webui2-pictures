@@ -1,0 +1,15 @@
+@mixin pip-picture-list-edit-mixin($theme) {
+    $foreground: map-get($theme, foreground);
+    $background: map-get($theme, background);
+    .pip-picture-list-edit div>div:focus pip-picture {
+        outline: solid 2px mat-color($foreground, text);
+    }
+    .pip-picture-list-edit div>div .delete-button {
+        color: mat-color($foreground, text);
+        background: mat-color($background, card);
+        opacity: 0.56;
+    }
+    .pip-picture-list-edit div>pip-picture-edit:focus {
+        border-color: mat-color($foreground, text);
+    }
+}

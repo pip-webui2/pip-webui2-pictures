@@ -1,0 +1,14 @@
+@mixin pip-picture-edit-mixin($theme) {
+    $foreground: map-get($theme, foreground);
+    $background: map-get($theme, background);
+
+    .pip-picture-edit {
+        border: dashed 2px mat-color($foreground, divider);
+
+        .pip-add-image .delete-button {
+            color: mat-color($foreground, text);
+            background: mat-color($background, card);
+            opacity: 0.56;
+        }
+    }
+}

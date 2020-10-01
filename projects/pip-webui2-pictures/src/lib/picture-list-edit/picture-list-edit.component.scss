@@ -1,27 +1,3 @@
-@import '~pip-webui2-themes/variables';
-
-@mixin picture-list-edit-mixin($theme) {
-    $foreground: map-get($theme, foreground);
-    $background: map-get($theme, background);
-    :host div>div:focus pip-picture {
-        outline: solid 2px mat-color($foreground, text);
-    }
-    :host div>div .delete-button {
-        color: mat-color($foreground, text);
-        background: mat-color($background, card);
-        opacity: 0.56;
-    }
-    :host div>pip-picture-edit:focus {
-        border-color: mat-color($foreground, text);
-    }
-}
-
-@each $class, $theme in $themes {
-    .#{$class} {
-        @include picture-list-edit-mixin($theme);
-    }
-}
-
 :host {
     div {
         >div,

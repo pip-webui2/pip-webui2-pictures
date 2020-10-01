@@ -1,9 +1,14 @@
 import { TestBed, async } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatToolbarModule, MatSelectModule, MatSidenavModule, MatIconModule, MatButtonModule, MatMenuModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { TranslateModule } from '@ngx-translate/core';
-import { PipThemesModule } from 'pip-webui2-themes';
+import { PipThemesModule, pipWebUI2ThemesList } from 'pip-webui2-themes';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -30,7 +35,9 @@ describe('AppComponent', () => {
         MatMenuModule,
         TranslateModule.forRoot(),
 
-        PipThemesModule.forRoot(),
+        PipThemesModule.withConfig({
+          themes: pipWebUI2ThemesList
+      }),
 
         AppRoutingModule,
         ExamplesListModule,
