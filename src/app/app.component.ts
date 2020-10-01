@@ -16,7 +16,6 @@ import { combineLatestMap } from './utils';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public activeMediaQuery: boolean;
   public app = 'Pictures';
   public url: string;
 

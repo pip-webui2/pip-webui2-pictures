@@ -1,4 +1,4 @@
-<mat-sidenav-container class="content" *ngIf="list">
+<mat-sidenav-container class="content" *ngIf="ctx$ | async as ctx">
   <mat-sidenav #sidenav>
     <examples-list [list]="list" [selectedItemIndex]="listIndex" (selectedItemIndexChange)="onListItemIndexChanged($event);">
     </examples-list>
@@ -6,7 +6,7 @@
 
   <mat-toolbar color="primary" class="mat-elevation-z6 example-appbar">
     <span fxLayout="row" fxLayoutAlign="start center" fxFlex="grow">
-      <button mat-icon-button *ngIf="activeMediaQuery">
+      <button mat-icon-button *ngIf="ctx.activeMediaQuery">
         <mat-icon (click)="sidenav.open()">reorder</mat-icon>
       </button>
       <span fxFlex="grow" class="pointer">{{app}}</span>
@@ -32,7 +32,7 @@
   </mat-toolbar>
 
   <div fxLayout="row" style="height: calc(100% - 68px);">
-    <examples-list *ngIf="!activeMediaQuery" class="mat-elevation-z6 nav" [list]="list" [selectedItemIndex]="listIndex"
+    <examples-list *ngIf="!ctx.activeMediaQuery" class="mat-elevation-z6 nav" [list]="list" [selectedItemIndex]="listIndex"
                    (selectedItemIndexChange)="onListItemIndexChanged($event)">
     </examples-list>
     <div fxFlex="grow" style="width: calc(100% - 300px); overflow: auto">
