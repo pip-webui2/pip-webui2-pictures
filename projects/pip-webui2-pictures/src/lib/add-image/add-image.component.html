@@ -2,9 +2,9 @@
     <ng-content></ng-content>
 </div>
 <mat-menu #addImage="matMenu">
-    <button mat-menu-item (click)="onCameraClick()">{{ 'PICTURES.FROM_CAMERA' | translate }}</button>
-    <button mat-menu-item (click)="onPictureUrlClick()">{{ 'PICTURES.FROM_LINK' | translate }}</button>
-    <button mat-menu-item>
+    <button mat-menu-item *ngIf="sources.indexOf('camera') >= 0" (click)="onCameraClick()">{{ 'PICTURES.FROM_CAMERA' | translate }}</button>
+    <button mat-menu-item *ngIf="sources.indexOf('link') >= 0" (click)="onPictureUrlClick()">{{ 'PICTURES.FROM_LINK' | translate }}</button>
+    <button mat-menu-item *ngIf="sources.indexOf('file') >= 0">
         <input #fileInput type="file" name="file" (change)="onUploadClick($event, fileInput)">
         {{ 'PICTURES.FROM_FILE' | translate }}
     </button>

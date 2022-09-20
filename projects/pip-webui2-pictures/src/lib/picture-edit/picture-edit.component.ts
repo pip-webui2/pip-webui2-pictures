@@ -1,7 +1,7 @@
 import { Component, Input, Output, OnInit, OnDestroy, AfterViewInit, ViewChild, EventEmitter, Renderer, ElementRef } from '@angular/core';
 
 import { addPasteListener, removePasteListener } from '../shared/picture-utils';
-import { PipAddImageComponent } from '../add-image/add-image.component';
+import { PipAddImageComponent, PipAddImageSource } from '../add-image/add-image.component';
 
 @Component({
     selector: 'pip-picture-edit',
@@ -16,6 +16,7 @@ export class PipPictureEditComponent implements OnInit, OnDestroy, AfterViewInit
     @Input() public defaultIcon: string = null;
     @Input() public letterIcon: string = null;
     @Input() public deleteIcon = 'clear';
+    @Input() public sources: PipAddImageSource[] = ['camera', 'link', 'file'];
     @Input() set src(source: string) {
         this.imageSource = source;
     }

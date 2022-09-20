@@ -1,4 +1,4 @@
-import { Component, Output, OnInit, AfterViewInit, EventEmitter, Renderer, ElementRef, ViewChild } from '@angular/core';
+import { Component, Output, OnInit, AfterViewInit, EventEmitter, Input, Renderer, ElementRef, ViewChild } from '@angular/core';
 import { MatDialog, MatMenuTrigger } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -6,6 +6,7 @@ import { PipCameraDialogComponent } from '../camera-dialog/camera-dialog.compone
 import { PipPictureUrlDialogComponent } from '../picture-url-dialog/picture-url-dialog.component';
 import { AddImageTranslations } from './shared/add-image.translations';
 
+export type PipAddImageSource = 'camera' | 'link' | 'file';
 
 @Component({
     selector: 'pip-add-image',
@@ -15,6 +16,8 @@ import { AddImageTranslations } from './shared/add-image.translations';
 export class PipAddImageComponent implements OnInit, AfterViewInit {
     @ViewChild(MatMenuTrigger) public menu: MatMenuTrigger;
     @ViewChild('fileInput') fileInput: any;
+
+    @Input() sources: PipAddImageSource[] = ['camera', 'link', 'file'];
 
     // tslint:disable-next-line:no-output-on-prefix
     @Output() onImageLoad: EventEmitter<any> = new EventEmitter<any>();
